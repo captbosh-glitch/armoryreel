@@ -1,0 +1,9 @@
+# Working files stay on this Mac; only the site (index.html + assets/) is published
+.DS_Store
+*.psd
+*.png
+/*.jpg
+/Mockups New/
+/Weapons/
+/mockup-v*.html
+/Project Notes.md
