@@ -12,7 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/site.css">
 </head>
-<body>
+<body data-root="../../">
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-search" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></g></symbol>
@@ -21,16 +21,16 @@
 <header><div class="wrap">
   <a class="logo" href="../../">Armory<span>.Reel</span></a>
   <nav><a href="../../films/">Films</a><a href="../../weapons/" class="on">Weapons</a><a href="../../characters/">Characters</a><a href="../../categories/">Categories</a></nav>
-  <div class="search"><svg><use href="#i-search"/></svg>Film, weapon or character…</div>
+  <div class="sbox hsearch"><label class="search"><svg><use href="#i-search"/></svg><input type="search" placeholder="Film, weapon or character…" aria-label="Search films, weapons and characters" autocomplete="off"></label><div class="sresults hide" role="listbox"></div></div>
   <a class="menu" href="#">Menu &#8801;</a>
 </div></header>
-<div class="msearch"><div class="wrap"><div class="search"><svg><use href="#i-search"/></svg>Film, weapon or character…</div></div></div>
+<div class="msearch"><div class="wrap"><div class="sbox"><label class="search"><svg><use href="#i-search"/></svg><input type="search" placeholder="Film, weapon or character…" aria-label="Search films, weapons and characters" autocomplete="off"></label><div class="sresults hide" role="listbox"></div></div></div></div>
 
 <main id="detail">
   <div class="dtop"><div class="wrap">
     <div class="crumbs"><a href="../../categories/fantasy/">Fantasy &amp; superhero</a><i>/</i><a href="../../films/krull/">Krull (1983)</a><i>/</i>The Glaive</div>
     <div class="dhero">
-      <div class="art hasgal"><img src="../../assets/weapons/glaive.jpg" alt="The Glaive"><a class="galchip" href="#gallery">&#9638; 4 photos &middot; &#9654; 2 videos</a></div>
+      <div class="art hasgal"><img src="../../assets/thumbs/1600/weapons/glaive.jpg" alt="The Glaive"><a class="galchip" href="#gallery">&#9638; 4 photos &middot; &#9654; 2 videos</a></div>
       <div class="info">
         <div class="kicker">Weapon / Fantasy</div>
         <h1>The<br>Glaive</h1>
@@ -47,24 +47,24 @@
       <div class="sec-head"><h2>Gallery</h2>
         <div class="gtabs" role="tablist"><button class="on" data-t="photos" role="tab" aria-selected="true">Photos <span>4</span></button><button data-t="videos" role="tab" aria-selected="false">Videos <span>2</span></button></div>
       </div>
-      <div class="gal few" id="galPhotos"><button class="gi" data-k="photos" data-i="0"><span class="th"><span class="slot"><b>1</b>Photo</span><img src="../../assets/gallery/glaive/glaive1.jpg" alt="" loading="lazy"></span><span class="gcap">Colwyn raises the Glaive, Lyssa behind him<span class="mono">Film still</span></span></button><button class="gi" data-k="photos" data-i="1"><span class="th"><span class="slot"><b>2</b>Photo</span><img src="../../assets/gallery/glaive/glaive2.jpg" alt="" loading="lazy"></span><span class="gcap">Colwyn with the Glaive inside the Black Fortress<span class="mono">Film still</span></span></button><button class="gi" data-k="photos" data-i="2"><span class="th"><span class="slot"><b>3</b>Photo</span><img src="../../assets/gallery/glaive/glaive4.jpg" alt="" loading="lazy"></span><span class="gcap">The prop, blades out<span class="mono">Studio photo</span></span></button><button class="gi" data-k="photos" data-i="3"><span class="th"><span class="slot"><b>4</b>Photo</span><img src="../../assets/gallery/glaive/glaive3.jpg" alt="" loading="lazy"></span><span class="gcap">The prop, close on one blade and its jewel<span class="mono">Studio photo</span></span></button></div>
+      <div class="gal few" id="galPhotos"><button class="gi" data-k="photos" data-i="0"><span class="th"><span class="slot"><b>1</b>Photo</span><img src="../../assets/thumbs/800/gallery/glaive/glaive1.jpg" alt="" loading="lazy"></span><span class="gcap">Colwyn raises the Glaive, Lyssa behind him<span class="mono">Film still</span></span></button><button class="gi" data-k="photos" data-i="1"><span class="th"><span class="slot"><b>2</b>Photo</span><img src="../../assets/thumbs/800/gallery/glaive/glaive2.jpg" alt="" loading="lazy"></span><span class="gcap">Colwyn with the Glaive inside the Black Fortress<span class="mono">Film still</span></span></button><button class="gi" data-k="photos" data-i="2"><span class="th"><span class="slot"><b>3</b>Photo</span><img src="../../assets/thumbs/800/gallery/glaive/glaive4.jpg" alt="" loading="lazy"></span><span class="gcap">The prop, blades out<span class="mono">Studio photo</span></span></button><button class="gi" data-k="photos" data-i="3"><span class="th"><span class="slot"><b>4</b>Photo</span><img src="../../assets/thumbs/800/gallery/glaive/glaive3.jpg" alt="" loading="lazy"></span><span class="gcap">The prop, close on one blade and its jewel<span class="mono">Studio photo</span></span></button></div>
       <div class="gal vids hide" id="galVideos"><button class="gi" data-k="videos" data-i="0"><span class="th"><span class="slot"><b>1</b>Video</span><img src="https://i.ytimg.com/vi/haAEWCmdfis/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span><span class="dur">9:04</span></span><span class="gcap">Colwyn retrieves the Glaive from the mountain<span class="mono">Film clip · Now Scaring</span></span></button><button class="gi" data-k="videos" data-i="1"><span class="th"><span class="slot"><b>2</b>Video</span><img src="https://i.ytimg.com/vi/Jp6zmsmkqSk/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span><span class="dur">1:20</span></span><span class="gcap">The Glaive in action<span class="mono">Film clip · 80s D&amp;D Fan</span></span></button></div>
     </section>
 
     <section style="padding-top:0"><div class="two">
       <div>
         <div class="sec-head"><h2>Appears in</h2></div>
-        <div class="appears"><div class="film"><a class="poster" href="../../films/krull/"><span>Krull</span><img src="../../assets/posters/krull.jpg" alt="" loading="lazy"></a><div class="cap"><h3><a href="../../films/krull/">Krull</a></h3><div class="sub">1983 · <a class="ext" href="https://www.imdb.com/title/tt0085811/" target="_blank" rel="noopener" aria-label="Krull on IMDb (opens in a new tab)">IMDb</a></div></div></div></div>
+        <div class="appears"><div class="film"><a class="poster" href="../../films/krull/"><span>Krull</span><img src="../../assets/thumbs/480/posters/krull.jpg" alt="" loading="lazy"></a><div class="cap"><h3><a href="../../films/krull/">Krull</a></h3><div class="sub">1983 · <a class="ext" href="https://www.imdb.com/title/tt0085811/" target="_blank" rel="noopener" aria-label="Krull on IMDb (opens in a new tab)">IMDb</a></div></div></div></div>
       </div>
       <div>
         <div class="sec-head"><h2>Who carries it</h2></div>
-        <div class="who"><div class="char"><a class="photo" href="../../characters/colwyn/"><img src="../../assets/characters/colwyn.jpg" alt="" loading="lazy"></a><div class="cap"><h3><a href="../../characters/colwyn/">Colwyn</a></h3><div class="sub"><a class="ext" href="https://www.imdb.com/name/nm0550989/" target="_blank" rel="noopener" aria-label="Ken Marshall on IMDb (opens in a new tab)">Ken Marshall</a></div></div></div></div>
+        <div class="who"><div class="char"><a class="photo" href="../../characters/colwyn/"><img src="../../assets/thumbs/480/characters/colwyn.jpg" alt="" loading="lazy"></a><div class="cap"><h3><a href="../../characters/colwyn/">Colwyn</a></h3><div class="sub"><a class="ext" href="https://www.imdb.com/name/nm0550989/" target="_blank" rel="noopener" aria-label="Ken Marshall on IMDb (opens in a new tab)">Ken Marshall</a></div></div></div></div>
       </div>
     </div></section>
 
     <section style="padding-top:0">
       <div class="sec-head"><h2>More weapons</h2><a class="more" href="../../weapons/">See all</a></div>
-      <div class="rel"><a class="wcard" href="../../weapons/kapa/"><div class="art"><img src="../../assets/weapons/kapa.jpg" alt="" loading="lazy"></div><div class="cap"><h3>Dar’s Kapa</h3><div class="sub">The Beastmaster · 1982 · <b>Dar</b></div></div></a><a class="wcard" href="../../weapons/dars-sword/"><div class="art"><img src="../../assets/weapons/beastmaster-sword.jpg" alt="" loading="lazy"></div><div class="cap"><h3>Dar’s Sword</h3><div class="sub">The Beastmaster · 1982 · <b>Dar</b></div></div></a><a class="wcard" href="../../weapons/m41a/"><div class="art"><img src="../../assets/photos/m41a.jpg" alt="" loading="lazy"></div><div class="cap"><h3>M41A Pulse Rifle</h3><div class="media mono">5 photos · 1 video</div><div class="sub">Aliens · 1986 · <b>Hicks, Hudson &amp; Ripley</b></div></div></a><a class="wcard" href="../../weapons/hans-blaster/"><div class="art"><img src="../../assets/weapons/blaster.jpg" alt="" loading="lazy"></div><div class="cap"><h3>Han’s Blaster</h3><div class="media mono">5 photos · 2 videos</div><div class="sub">Star Wars · 1977 · <b>Han Solo</b></div></div></a></div>
+      <div class="rel"><a class="wcard" href="../../weapons/kapa/"><div class="art"><img src="../../assets/thumbs/800/weapons/kapa.jpg" alt="" loading="lazy"></div><div class="cap"><h3>Dar’s Kapa</h3><div class="sub">The Beastmaster · 1982 · <b>Dar</b></div></div></a><a class="wcard" href="../../weapons/dars-sword/"><div class="art"><img src="../../assets/thumbs/800/weapons/beastmaster-sword.jpg" alt="" loading="lazy"></div><div class="cap"><h3>Dar’s Sword</h3><div class="sub">The Beastmaster · 1982 · <b>Dar</b></div></div></a><a class="wcard" href="../../weapons/m41a/"><div class="art"><img src="../../assets/thumbs/800/photos/m41a.jpg" alt="" loading="lazy"></div><div class="cap"><h3>M41A Pulse Rifle</h3><div class="media mono">5 photos · 1 video</div><div class="sub">Aliens · 1986 · <b>Hicks, Hudson &amp; Ripley</b></div></div></a><a class="wcard" href="../../weapons/hans-blaster/"><div class="art"><img src="../../assets/thumbs/800/weapons/blaster.jpg" alt="" loading="lazy"></div><div class="cap"><h3>Han’s Blaster</h3><div class="media mono">5 photos · 2 videos</div><div class="sub">Star Wars · 1977 · <b>Han Solo</b></div></div></a></div>
     </section>
   </div>
 </main>

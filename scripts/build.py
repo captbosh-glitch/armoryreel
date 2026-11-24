@@ -15,8 +15,13 @@ Images are looked up on disk, so a page never points at a missing file:
   characters     assets/characters/{photo}.jpg    (no file: initials stand in)
 A bad cross-reference or a missing gallery file stops the build; images on disk
 that no entry uses are listed at the end.
+
+Pages show resized copies from assets/thumbs/{width}/ (made here with Pillow, and
+remade when the original changes); the weapon page hero and the lightbox use the originals.
+The search box reads assets/search-index.json, also written here.
 """
 import html, json, sys
+from PIL import Image
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -58,6 +63,7 @@ errors += [f'site.json: unknown film {s}' for s in SITE['home_films'] if s not i
 
 used = set()      # every asset a page references, for the unused-image report
 written = set()   # every page this build wrote
+thumbs_written = set()
 
 
 def asset(rel):
@@ -66,6 +72,21 @@ def asset(rel):
         used.add(rel)
         return rel
     return None
+
+
+def thumb(rel, width):
+    """A copy of assets/{rel} at most `width` px wide, in assets/thumbs/{width}/."""
+    out = f'thumbs/{width}/{rel}'
+    src, dest = ROOT / 'assets' / rel, ROOT / 'assets' / out
+    if not dest.exists() or dest.stat().st_mtime < src.stat().st_mtime:
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        with Image.open(src) as im:
+            im = im.convert('RGB')
+            if im.width > width:
+                im = im.resize((width, round(im.height * width / im.width)), Image.LANCZOS)
+            im.save(dest, 'JPEG', quality=82, optimize=True, progressive=True)
+    thumbs_written.add(dest)
+    return out
 
 
 def weapon_art(w):
@@ -133,14 +154,14 @@ def initials(name):
 
 def poster(f, R, tag='div', href=''):
     rel = asset(f'posters/{f["poster"]}.jpg') if f.get('poster') else None
-    img = f'<img src="{R}assets/{rel}" alt="" loading="lazy">' if rel else ''
+    img = f'<img src="{R}assets/{thumb(rel, 480)}" alt="" loading="lazy">' if rel else ''
     attr = f' href="{href}"' if href else ''
     return f'<{tag} class="poster"{attr}><span>{esc(f["title"])}</span>{img}</{tag}>'
 
 
 def char_photo(c, R, tag='div', href=''):
     rel = asset(f'characters/{c["photo"]}.jpg') if c.get('photo') else None
-    inner = f'<img src="{R}assets/{rel}" alt="" loading="lazy">' if rel else f'<span>{initials(c["name"])}</span>'
+    inner = f'<img src="{R}assets/{thumb(rel, 480)}" alt="" loading="lazy">' if rel else f'<span>{initials(c["name"])}</span>'
     attr = f' href="{href}"' if href else ''
     return f'<{tag} class="photo"{attr}>{inner}</{tag}>'
 
@@ -148,7 +169,7 @@ def char_photo(c, R, tag='div', href=''):
 def wcard(w, R):
     f = FILM[w['films'][0]]
     media = media_line(w['slug'])
-    return (f'<a class="wcard" href="{R}weapons/{w["slug"]}/"><div class="art"><img src="{R}assets/{ARTS[w["slug"]]}" alt="" loading="lazy"></div>'
+    return (f'<a class="wcard" href="{R}weapons/{w["slug"]}/"><div class="art"><img src="{R}assets/{thumb(ARTS[w["slug"]], 800)}" alt="" loading="lazy"></div>'
             f'<div class="cap"><h3>{esc(w["name"])}</h3>' + (f'<div class="media mono">{media}</div>' if media else '') +
             f'<div class="sub">{esc(f["title"])} · {f["year"]} · <b>{carriers_line(w)}</b></div></div></a>')
 
@@ -195,6 +216,9 @@ def specs_html(rows):
     return ''.join(f'<div><span class="mono">{esc(k)}</span><b>{esc(v)}</b></div>' for k, v in rows)
 
 
+SEARCH = ('<label class="search"><svg><use href="#i-search"/></svg>'
+          '<input type="search" placeholder="Film, weapon or character…" aria-label="Search films, weapons and characters" autocomplete="off"></label>'
+          '<div class="sresults hide" role="listbox"></div>')
 NAV = [('films', 'Films'), ('weapons', 'Weapons'), ('characters', 'Characters'), ('categories', 'Categories')]
 SUFFIX = ' | Armory.Reel'
 
@@ -216,7 +240,7 @@ def page(path, title, desc, main, active='', tail=''):
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{R}assets/site.css">
 </head>
-<body>
+<body data-root="{R}">
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-search" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></g></symbol>
@@ -225,10 +249,10 @@ def page(path, title, desc, main, active='', tail=''):
 <header><div class="wrap">
   <a class="logo" href="{R or './'}">Armory<span>.Reel</span></a>
   <nav>{nav}</nav>
-  <div class="search"><svg><use href="#i-search"/></svg>Film, weapon or character…</div>
+  <div class="sbox hsearch">{SEARCH}</div>
   <a class="menu" href="#">Menu &#8801;</a>
 </div></header>
-<div class="msearch"><div class="wrap"><div class="search"><svg><use href="#i-search"/></svg>Film, weapon or character…</div></div></div>
+<div class="msearch"><div class="wrap"><div class="sbox">{SEARCH}</div></div></div>
 
 {main}
 
@@ -259,7 +283,7 @@ def build_home():
       <div class="kicker">The movie weapons database</div>
       <h1>Weapons that<br>stole the scene.</h1>
       <p class="lede">Every blade, blaster, bow and living weapon on screen, in photos and clips. Follow the film. Find the weapon. Meet who carries it.</p>
-      <div class="bigsearch"><div class="search"><svg><use href="#i-search"/></svg><span class="ph-long">Try “Glaive”, “Aliens” or “Ripley”</span><span class="ph-short">Try “Glaive” or “Ripley”</span></div><button>Search</button></div>
+      <div class="sbox big"><div class="bigsearch"><label class="search"><svg><use href="#i-search"/></svg><input type="search" placeholder="Try “Glaive”, “Aliens” or “Ripley”" data-short="Try “Glaive” or “Ripley”" aria-label="Search films, weapons and characters" autocomplete="off"></label><button type="button">Search</button></div><div class="sresults hide" role="listbox"></div></div>
       <div class="stats">
         <div><b>{len(FILMS)}</b><span class="mono">Films</span></div>
         <div><b>{len(WEAPONS)}</b><span class="mono">Weapons</span></div>
@@ -267,7 +291,7 @@ def build_home():
       </div>
     </div>
     <a class="feature" href="weapons/{h['slug']}/">
-      <div class="art"><img src="assets/{ARTS[h['slug']]}" alt="{esc(h['name'])}"></div>
+      <div class="art"><img src="assets/{thumb(ARTS[h['slug']], 1400)}" alt="{esc(h['name'])}"></div>
       <div class="cap">
         <div><h3>{esc(h['name'])}</h3><div class="sub">{esc(hf['title'])} · {hf['year']} · carried by {carriers_line(h)}</div></div>
         <span class="more">Explore the weapon</span>
@@ -306,7 +330,7 @@ def gallery_html(photos, videos, R):
     def slot(i, label):
         return f'<span class="slot"><b>{i + 1}</b>{label}</span>'
     ptiles = ''.join(
-        f'<button class="gi" data-k="photos" data-i="{i}"><span class="th">{slot(i, "Photo")}<img src="{R}assets/{p["rel"]}" alt="" loading="lazy"></span>'
+        f'<button class="gi" data-k="photos" data-i="{i}"><span class="th">{slot(i, "Photo")}<img src="{R}assets/{thumb(p["rel"], 800)}" alt="" loading="lazy"></span>'
         f'<span class="gcap">{esc(p["cap"])}<span class="mono">{esc(p["meta"])}</span></span></button>' for i, p in enumerate(photos))
     vtiles = ''.join(
         f'<button class="gi" data-k="videos" data-i="{i}"><span class="th">{slot(i, "Video")}<img src="https://i.ytimg.com/vi/{v["yt"]}/hqdefault.jpg" alt="" loading="lazy">'
@@ -358,7 +382,7 @@ def build_weapon(w):
   <div class="dtop"><div class="wrap">
     <div class="crumbs"><a href="{R}categories/{cat['slug']}/">{esc(cat['name'])}</a><i>/</i><a href="{R}films/{f['slug']}/">{esc(f['title'])} ({f['year']})</a><i>/</i>{esc(w['name'])}</div>
     <div class="dhero">
-      <div class="art{" hasgal" if chip else ""}"><img src="{R}assets/{ARTS[s]}" alt="{esc(w['name'])}">{chip}</div>
+      <div class="art{" hasgal" if chip else ""}"><img src="{R}assets/{thumb(ARTS[s], 1600)}" alt="{esc(w['name'])}">{chip}</div>
       <div class="info">
         <div class="kicker">Weapon / {esc(cat['short'])}</div>
         <h1>{title_lines}</h1>
@@ -552,6 +576,41 @@ def build_lists():
         page(f'categories/{c["slug"]}/index.html', f'{c["name"]}: movie weapons{SUFFIX}', f'{c["name"]} on Armory.Reel: {c["blurb"]}.', main, 'categories')
 
 
+def build_search():
+    """assets/search-index.json: one row per page. t title, k kind, s subtitle, u url and
+    i image (from the site root), w extra words to match (films, carriers, actors...)."""
+    rows = []
+    for w in WEAPONS:
+        f = FILM[w['films'][0]]
+        rows.append({'t': w['name'], 'k': 'Weapon', 's': f'{f["title"]} · {f["year"]}', 'u': f'weapons/{w["slug"]}/',
+                     'i': f'assets/{thumb(ARTS[w["slug"]], 240)}',
+                     'w': ' '.join([FILM[x]['title'] for x in w['films']] + [CHAR[c]['name'] for c in w['carriers']]
+                                   + [w.get('type', ''), CAT[w['category']]['name']] + w.get('tags', []))})
+    for f in FILMS:
+        rel = asset(f'posters/{f["poster"]}.jpg') if f.get('poster') else None
+        ws = W_BY_FILM[f['slug']]
+        rows.append({'t': f['title'], 'k': 'Film', 's': f'{f["year"]} · ' + (plural(len(ws), 'weapon') if ws else 'Coming soon'),
+                     'u': f'films/{f["slug"]}/', 'i': f'assets/{thumb(rel, 240)}' if rel else '',
+                     'w': ' '.join([str(f['year']), CAT[f['category']]['name']] + [w['name'] for w in ws])})
+    for c in CHARS:
+        rel = asset(f'characters/{c["photo"]}.jpg') if c.get('photo') else None
+        rows.append({'t': c['name'], 'k': 'Character', 's': c.get('actor') or c.get('note', ''), 'u': f'characters/{c["slug"]}/',
+                     'i': f'assets/{thumb(rel, 240)}' if rel else '',
+                     'w': ' '.join([c.get('actor', '')] + [FILM[x]['title'] for x in c['films']] + [w['name'] for w in W_BY_CHAR[c['slug']]])})
+    for c in CATS:
+        rows.append({'t': c['name'], 'k': 'Category', 's': c['blurb'], 'u': f'categories/{c["slug"]}/', 'i': '', 'w': ''})
+    (ROOT / 'assets' / 'search-index.json').write_text(json.dumps(rows, ensure_ascii=False, separators=(',', ':')))
+
+
+def remove_stale_thumbs():
+    gone = 0
+    for p in (ROOT / 'assets' / 'thumbs').rglob('*.jpg'):
+        if p not in thumbs_written:
+            p.unlink()
+            gone += 1
+    return gone
+
+
 def remove_stale():
     """Delete marked pages this build didn't write (a renamed or removed entry)."""
     gone = []
@@ -586,7 +645,9 @@ if __name__ == '__main__':
     for c in CHARS:
         build_char(c)
     build_lists()
+    build_search()
     print(f'Built {len(written)} pages: {len(WEAPONS)} weapons, {len(FILMS)} films, {len(CHARS)} characters, {len(CATS)} categories.')
+    remove_stale_thumbs()
     gone = remove_stale()
     if gone:
         print('Removed stale pages:\n  ' + '\n  '.join(gone))

@@ -12,7 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/site.css">
 </head>
-<body>
+<body data-root="../../">
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-search" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></g></symbol>
@@ -21,10 +21,10 @@
 <header><div class="wrap">
   <a class="logo" href="../../">Armory<span>.Reel</span></a>
   <nav><a href="../../films/" class="on">Films</a><a href="../../weapons/">Weapons</a><a href="../../characters/">Characters</a><a href="../../categories/">Categories</a></nav>
-  <div class="search"><svg><use href="#i-search"/></svg>Film, weapon or character…</div>
+  <div class="sbox hsearch"><label class="search"><svg><use href="#i-search"/></svg><input type="search" placeholder="Film, weapon or character…" aria-label="Search films, weapons and characters" autocomplete="off"></label><div class="sresults hide" role="listbox"></div></div>
   <a class="menu" href="#">Menu &#8801;</a>
 </div></header>
-<div class="msearch"><div class="wrap"><div class="search"><svg><use href="#i-search"/></svg>Film, weapon or character…</div></div></div>
+<div class="msearch"><div class="wrap"><div class="sbox"><label class="search"><svg><use href="#i-search"/></svg><input type="search" placeholder="Film, weapon or character…" aria-label="Search films, weapons and characters" autocomplete="off"></label><div class="sresults hide" role="listbox"></div></div></div></div>
 
 <main>
   <div class="dtop"><div class="wrap">
@@ -47,7 +47,7 @@
   
   <section style="padding-top:0"><div class="wrap">
     <div class="sec-head"><h2>More blades & martial arts</h2><a class="more" href="../../categories/blades/">All blades & martial arts</a></div>
-    <div class="films"><a class="film" href="../../films/kill-bill-vol-1/"><div class="poster"><span>Kill Bill Vol. 1</span><img src="../../assets/posters/killbill.jpg" alt="" loading="lazy"></div><div class="cap"><h3>Kill Bill Vol. 1</h3><div class="sub">2003 · 1 weapon</div></div></a><a class="film" href="../../films/seven-samurai/"><div class="poster"><span>Seven Samurai</span></div><div class="cap"><h3>Seven Samurai</h3><div class="sub">1954 · Coming soon</div></div></a><a class="film" href="../../films/crouching-tiger-hidden-dragon/"><div class="poster"><span>Crouching Tiger, Hidden Dragon</span></div><div class="cap"><h3>Crouching Tiger, Hidden Dragon</h3><div class="sub">2000 · Coming soon</div></div></a><a class="film" href="../../films/enter-the-dragon/"><div class="poster"><span>Enter the Dragon</span></div><div class="cap"><h3>Enter the Dragon</h3><div class="sub">1973 · Coming soon</div></div></a><a class="film" href="../../films/gladiator/"><div class="poster"><span>Gladiator</span></div><div class="cap"><h3>Gladiator</h3><div class="sub">2000 · Coming soon</div></div></a><a class="film" href="../../films/300/"><div class="poster"><span>300</span></div><div class="cap"><h3>300</h3><div class="sub">2006 · Coming soon</div></div></a></div>
+    <div class="films"><a class="film" href="../../films/kill-bill-vol-1/"><div class="poster"><span>Kill Bill Vol. 1</span><img src="../../assets/thumbs/480/posters/killbill.jpg" alt="" loading="lazy"></div><div class="cap"><h3>Kill Bill Vol. 1</h3><div class="sub">2003 · 1 weapon</div></div></a><a class="film" href="../../films/seven-samurai/"><div class="poster"><span>Seven Samurai</span></div><div class="cap"><h3>Seven Samurai</h3><div class="sub">1954 · Coming soon</div></div></a><a class="film" href="../../films/crouching-tiger-hidden-dragon/"><div class="poster"><span>Crouching Tiger, Hidden Dragon</span></div><div class="cap"><h3>Crouching Tiger, Hidden Dragon</h3><div class="sub">2000 · Coming soon</div></div></a><a class="film" href="../../films/enter-the-dragon/"><div class="poster"><span>Enter the Dragon</span></div><div class="cap"><h3>Enter the Dragon</h3><div class="sub">1973 · Coming soon</div></div></a><a class="film" href="../../films/gladiator/"><div class="poster"><span>Gladiator</span></div><div class="cap"><h3>Gladiator</h3><div class="sub">2000 · Coming soon</div></div></a><a class="film" href="../../films/300/"><div class="poster"><span>300</span></div><div class="cap"><h3>300</h3><div class="sub">2006 · Coming soon</div></div></a></div>
   </div></section>
 </main>
 

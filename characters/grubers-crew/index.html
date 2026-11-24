@@ -12,7 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/site.css">
 </head>
-<body>
+<body data-root="../../">
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-search" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></g></symbol>
@@ -21,10 +21,10 @@
 <header><div class="wrap">
   <a class="logo" href="../../">Armory<span>.Reel</span></a>
   <nav><a href="../../films/">Films</a><a href="../../weapons/">Weapons</a><a href="../../characters/" class="on">Characters</a><a href="../../categories/">Categories</a></nav>
-  <div class="search"><svg><use href="#i-search"/></svg>Film, weapon or character…</div>
+  <div class="sbox hsearch"><label class="search"><svg><use href="#i-search"/></svg><input type="search" placeholder="Film, weapon or character…" aria-label="Search films, weapons and characters" autocomplete="off"></label><div class="sresults hide" role="listbox"></div></div>
   <a class="menu" href="#">Menu &#8801;</a>
 </div></header>
-<div class="msearch"><div class="wrap"><div class="search"><svg><use href="#i-search"/></svg>Film, weapon or character…</div></div></div>
+<div class="msearch"><div class="wrap"><div class="sbox"><label class="search"><svg><use href="#i-search"/></svg><input type="search" placeholder="Film, weapon or character…" aria-label="Search films, weapons and characters" autocomplete="off"></label><div class="sresults hide" role="listbox"></div></div></div></div>
 
 <main>
   <div class="dtop"><div class="wrap">
@@ -42,11 +42,11 @@
 
   <section><div class="wrap">
     <div class="sec-head"><h2>Weapons carried</h2></div>
-    <div class="cards3"><a class="wcard" href="../../weapons/mp5/"><div class="art"><img src="../../assets/weapons/mp5.jpg" alt="" loading="lazy"></div><div class="cap"><h3>MP5</h3><div class="sub">Die Hard · 1988 · <b>John McClane</b></div></div></a></div>
+    <div class="cards3"><a class="wcard" href="../../weapons/mp5/"><div class="art"><img src="../../assets/thumbs/800/weapons/mp5.jpg" alt="" loading="lazy"></div><div class="cap"><h3>MP5</h3><div class="sub">Die Hard · 1988 · <b>John McClane</b></div></div></a></div>
   </div></section>
   <section style="padding-top:0"><div class="wrap">
     <div class="sec-head"><h2>Appears in</h2></div>
-    <div class="films"><a class="film" href="../../films/die-hard/"><div class="poster"><span>Die Hard</span><img src="../../assets/posters/diehard.jpg" alt="" loading="lazy"></div><div class="cap"><h3>Die Hard</h3><div class="sub">1988 · 2 weapons</div></div></a></div>
+    <div class="films"><a class="film" href="../../films/die-hard/"><div class="poster"><span>Die Hard</span><img src="../../assets/thumbs/480/posters/diehard.jpg" alt="" loading="lazy"></div><div class="cap"><h3>Die Hard</h3><div class="sub">1988 · 2 weapons</div></div></a></div>
   </div></section>
 </main>
 

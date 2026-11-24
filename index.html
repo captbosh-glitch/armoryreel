@@ -12,7 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
 </head>
-<body>
+<body data-root="">
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-search" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></g></symbol>
@@ -21,10 +21,10 @@
 <header><div class="wrap">
   <a class="logo" href="./">Armory<span>.Reel</span></a>
   <nav><a href="films/">Films</a><a href="weapons/">Weapons</a><a href="characters/">Characters</a><a href="categories/">Categories</a></nav>
-  <div class="search"><svg><use href="#i-search"/></svg>Film, weapon or character…</div>
+  <div class="sbox hsearch"><label class="search"><svg><use href="#i-search"/></svg><input type="search" placeholder="Film, weapon or character…" aria-label="Search films, weapons and characters" autocomplete="off"></label><div class="sresults hide" role="listbox"></div></div>
   <a class="menu" href="#">Menu &#8801;</a>
 </div></header>
-<div class="msearch"><div class="wrap"><div class="search"><svg><use href="#i-search"/></svg>Film, weapon or character…</div></div></div>
+<div class="msearch"><div class="wrap"><div class="sbox"><label class="search"><svg><use href="#i-search"/></svg><input type="search" placeholder="Film, weapon or character…" aria-label="Search films, weapons and characters" autocomplete="off"></label><div class="sresults hide" role="listbox"></div></div></div></div>
 
 <main id="home">
   <div class="hero"><div class="wrap">
@@ -32,7 +32,7 @@
       <div class="kicker">The movie weapons database</div>
       <h1>Weapons that<br>stole the scene.</h1>
       <p class="lede">Every blade, blaster, bow and living weapon on screen, in photos and clips. Follow the film. Find the weapon. Meet who carries it.</p>
-      <div class="bigsearch"><div class="search"><svg><use href="#i-search"/></svg><span class="ph-long">Try “Glaive”, “Aliens” or “Ripley”</span><span class="ph-short">Try “Glaive” or “Ripley”</span></div><button>Search</button></div>
+      <div class="sbox big"><div class="bigsearch"><label class="search"><svg><use href="#i-search"/></svg><input type="search" placeholder="Try “Glaive”, “Aliens” or “Ripley”" data-short="Try “Glaive” or “Ripley”" aria-label="Search films, weapons and characters" autocomplete="off"></label><button type="button">Search</button></div><div class="sresults hide" role="listbox"></div></div>
       <div class="stats">
         <div><b>46</b><span class="mono">Films</span></div>
         <div><b>9</b><span class="mono">Weapons</span></div>
@@ -40,7 +40,7 @@
       </div>
     </div>
     <a class="feature" href="weapons/glaive/">
-      <div class="art"><img src="assets/weapons/glaive.jpg" alt="The Glaive"></div>
+      <div class="art"><img src="assets/thumbs/1400/weapons/glaive.jpg" alt="The Glaive"></div>
       <div class="cap">
         <div><h3>The Glaive</h3><div class="sub">Krull · 1983 · carried by Colwyn</div></div>
         <span class="more">Explore the weapon</span>
@@ -64,19 +64,19 @@
 
   <section style="padding-top:0"><div class="wrap">
     <div class="sec-head"><h2>Featured weapons</h2><a class="more" href="weapons/">See all</a></div>
-    <div class="feat"><a class="wcard" href="weapons/m41a/"><div class="art"><img src="assets/photos/m41a.jpg" alt="" loading="lazy"></div><div class="cap"><h3>M41A Pulse Rifle</h3><div class="media mono">5 photos · 1 video</div><div class="sub">Aliens · 1986 · <b>Hicks, Hudson &amp; Ripley</b></div></div></a>
-      <a class="wcard" href="weapons/auto-9/"><div class="art"><img src="assets/weapons/auto9.jpg" alt="" loading="lazy"></div><div class="cap"><h3>Auto-9</h3><div class="sub">RoboCop · 1987 · <b>RoboCop</b></div></div></a>
-      <a class="wcard" href="weapons/hans-blaster/"><div class="art"><img src="assets/weapons/blaster.jpg" alt="" loading="lazy"></div><div class="cap"><h3>Han’s Blaster</h3><div class="media mono">5 photos · 2 videos</div><div class="sub">Star Wars · 1977 · <b>Han Solo</b></div></div></a></div>
+    <div class="feat"><a class="wcard" href="weapons/m41a/"><div class="art"><img src="assets/thumbs/800/photos/m41a.jpg" alt="" loading="lazy"></div><div class="cap"><h3>M41A Pulse Rifle</h3><div class="media mono">5 photos · 1 video</div><div class="sub">Aliens · 1986 · <b>Hicks, Hudson &amp; Ripley</b></div></div></a>
+      <a class="wcard" href="weapons/auto-9/"><div class="art"><img src="assets/thumbs/800/weapons/auto9.jpg" alt="" loading="lazy"></div><div class="cap"><h3>Auto-9</h3><div class="sub">RoboCop · 1987 · <b>RoboCop</b></div></div></a>
+      <a class="wcard" href="weapons/hans-blaster/"><div class="art"><img src="assets/thumbs/800/weapons/blaster.jpg" alt="" loading="lazy"></div><div class="cap"><h3>Han’s Blaster</h3><div class="media mono">5 photos · 2 videos</div><div class="sub">Star Wars · 1977 · <b>Han Solo</b></div></div></a></div>
   </div></section>
 
   <section style="padding-top:0"><div class="wrap">
     <div class="sec-head"><h2>Follow the film</h2><a class="more" href="films/">All 46 films</a></div>
-    <div class="films"><a class="film" href="films/aliens/"><div class="poster"><span>Aliens</span><img src="assets/posters/aliens.jpg" alt="" loading="lazy"></div><div class="cap"><h3>Aliens</h3><div class="sub">1986 · 1 weapon</div></div></a>
-      <a class="film" href="films/krull/"><div class="poster"><span>Krull</span><img src="assets/posters/krull.jpg" alt="" loading="lazy"></div><div class="cap"><h3>Krull</h3><div class="sub">1983 · 1 weapon</div></div></a>
-      <a class="film" href="films/die-hard/"><div class="poster"><span>Die Hard</span><img src="assets/posters/diehard.jpg" alt="" loading="lazy"></div><div class="cap"><h3>Die Hard</h3><div class="sub">1988 · 2 weapons</div></div></a>
-      <a class="film" href="films/kill-bill-vol-1/"><div class="poster"><span>Kill Bill Vol. 1</span><img src="assets/posters/killbill.jpg" alt="" loading="lazy"></div><div class="cap"><h3>Kill Bill Vol. 1</h3><div class="sub">2003 · 1 weapon</div></div></a>
-      <a class="film" href="films/robocop/"><div class="poster"><span>RoboCop</span><img src="assets/posters/robocop.jpg" alt="" loading="lazy"></div><div class="cap"><h3>RoboCop</h3><div class="sub">1987 · 1 weapon</div></div></a>
-      <a class="film" href="films/the-beastmaster/"><div class="poster"><span>The Beastmaster</span><img src="assets/posters/beastmaster.jpg" alt="" loading="lazy"></div><div class="cap"><h3>The Beastmaster</h3><div class="sub">1982 · 2 weapons</div></div></a></div>
+    <div class="films"><a class="film" href="films/aliens/"><div class="poster"><span>Aliens</span><img src="assets/thumbs/480/posters/aliens.jpg" alt="" loading="lazy"></div><div class="cap"><h3>Aliens</h3><div class="sub">1986 · 1 weapon</div></div></a>
+      <a class="film" href="films/krull/"><div class="poster"><span>Krull</span><img src="assets/thumbs/480/posters/krull.jpg" alt="" loading="lazy"></div><div class="cap"><h3>Krull</h3><div class="sub">1983 · 1 weapon</div></div></a>
+      <a class="film" href="films/die-hard/"><div class="poster"><span>Die Hard</span><img src="assets/thumbs/480/posters/diehard.jpg" alt="" loading="lazy"></div><div class="cap"><h3>Die Hard</h3><div class="sub">1988 · 2 weapons</div></div></a>
+      <a class="film" href="films/kill-bill-vol-1/"><div class="poster"><span>Kill Bill Vol. 1</span><img src="assets/thumbs/480/posters/killbill.jpg" alt="" loading="lazy"></div><div class="cap"><h3>Kill Bill Vol. 1</h3><div class="sub">2003 · 1 weapon</div></div></a>
+      <a class="film" href="films/robocop/"><div class="poster"><span>RoboCop</span><img src="assets/thumbs/480/posters/robocop.jpg" alt="" loading="lazy"></div><div class="cap"><h3>RoboCop</h3><div class="sub">1987 · 1 weapon</div></div></a>
+      <a class="film" href="films/the-beastmaster/"><div class="poster"><span>The Beastmaster</span><img src="assets/thumbs/480/posters/beastmaster.jpg" alt="" loading="lazy"></div><div class="cap"><h3>The Beastmaster</h3><div class="sub">1982 · 2 weapons</div></div></a></div>
   </div></section>
 </main>
 

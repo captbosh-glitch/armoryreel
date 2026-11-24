@@ -10,6 +10,8 @@ Live at https://captbosh-glitch.github.io/armoryreel/ (noindexed for now).
 - `python3 scripts/build.py` writes every page: `index.html` plus `weapons/`, `films/`,
   `characters/` and `categories/`. Don't edit those by hand; edit `data/` and rebuild.
 - `assets/site.css` and `assets/site.js` are shared by every page.
+- The build also makes resized copies in `assets/thumbs/` (needs Pillow: `pip3 install pillow`) and the
+  search index `assets/search-index.json`. Both are generated; commit them with the pages.
 
 ## Adding a weapon
 

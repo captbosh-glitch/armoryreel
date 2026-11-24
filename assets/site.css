@@ -33,7 +33,27 @@ header nav a:hover{color:#fff}
 header .search,.msearch .search{background:#111A23;border-color:#2C3A49}
 .search{display:flex;align-items:center;gap:10px;background:var(--panel2);border:1px solid var(--line);border-radius:4px;padding:10px 14px;color:var(--faint);font-size:14px}
 .search svg{width:16px;height:16px;flex:none;color:var(--muted)}
-header .search{margin-left:auto;width:340px}
+.search input{flex:1;min-width:0;background:none;border:0;outline:none;color:var(--text);font:inherit}
+.search input::placeholder{color:var(--faint);opacity:1}
+.search input::-webkit-search-cancel-button{filter:invert(.6)}
+.search:focus-within{border-color:var(--rust)}
+.bigsearch:focus-within{border-color:var(--rust)}
+
+/* search results, under any search box */
+.sbox{position:relative}
+.sresults{position:absolute;top:calc(100% + 6px);left:0;right:0;z-index:40;background:var(--panel);border:1px solid var(--line);box-shadow:0 12px 32px rgba(0,0,0,.5);max-height:min(70vh,520px);overflow-y:auto}
+.sresults.hide{display:none}
+.sresults a{display:flex;align-items:center;gap:12px;padding:8px 12px;border-bottom:1px solid var(--line-soft)}
+.sresults a:last-child{border-bottom:0}
+.sresults a.on,.sresults a:hover{background:var(--panel2)}
+.sresults .ic{width:48px;height:48px;flex:none;background:radial-gradient(120% 90% at 50% 40%,#1E2A36,#0D131A);overflow:hidden;display:grid;place-items:center;font:700 16px var(--display);color:#5F6E7C}
+.sresults .ic img{width:100%;height:100%;object-fit:cover}
+.sresults .tx{min-width:0;flex:1}
+.sresults b{display:block;font-weight:500;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sresults .sb{display:block;color:var(--muted);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sresults .k{color:var(--rust);flex:none}
+.sresults .none{padding:14px;color:var(--muted);font-size:13px}
+header .hsearch{margin-left:auto;width:340px}
 .menu{display:none;margin-left:auto;font-size:14px;font-weight:500;color:var(--text)}
 .msearch{display:none}
 
@@ -63,10 +83,10 @@ section{padding:56px 0}
 .hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:64px;align-items:center}
 .hero h1{font-size:80px;line-height:.92;margin:18px 0 22px;white-space:nowrap}
 .hero .lede{color:var(--muted);font-size:17px;max-width:460px}
-.bigsearch{display:flex;margin-top:34px;max-width:580px;border:1px solid var(--line);border-radius:4px;overflow:hidden;background:var(--panel2)}
-.bigsearch .search{flex:1;border:0;border-radius:0;background:none;padding:16px}
+.sbox.big{margin-top:34px;max-width:580px}
+.bigsearch{display:flex;border:1px solid var(--line);border-radius:4px;overflow:hidden;background:var(--panel2)}
+.bigsearch .search{flex:1;border:0;border-radius:0;background:none;padding:16px;font-size:15px}
 .bigsearch button{font:600 14px var(--body);background:var(--rust-btn);color:#fff;border:0;padding:0 28px;cursor:pointer}
-.ph-short{display:none}
 .bigsearch button:hover{background:var(--rust-btn-h)}
 .bigsearch button::after{content:" \2197";font-size:12px}
 .stats{display:flex;gap:72px;margin-top:34px}
@@ -197,7 +217,7 @@ footer .fine{text-align:right;color:var(--faint);font-size:12px;max-width:420px}
 /* tablet */
 @media (max-width:1080px){
   .wrap{padding:0 28px}
-  header nav{gap:24px} header .search{width:260px}
+  header nav{gap:24px} header .hsearch{width:260px}
   .hero h1{font-size:62px} .dhero h1{font-size:64px}
   .films{grid-template-columns:repeat(3,minmax(0,1fr))}
   .two{grid-template-columns:minmax(0,1fr);gap:0}
@@ -211,7 +231,7 @@ footer .fine{text-align:right;color:var(--faint);font-size:12px;max-width:420px}
   .wrap{padding:0 20px}
   header .wrap{height:64px;gap:16px}
   .logo{font-size:24px}
-  header nav,header .search{display:none}
+  header nav,header .hsearch{display:none}
   .menu{display:block}
   .msearch{display:block;background:var(--nav-bg);padding:0 0 14px;border-bottom:1px solid var(--line)}
   header{border-bottom:0}
@@ -221,9 +241,9 @@ footer .fine{text-align:right;color:var(--faint);font-size:12px;max-width:420px}
   .hero .wrap{grid-template-columns:minmax(0,1fr);gap:32px}
   .hero h1{font-size:46px;margin:12px 0 14px}
   .hero .lede{font-size:15px}
-  .bigsearch{margin-top:24px}
+  .sbox.big{margin-top:24px}
   .bigsearch .search{padding:13px 12px;font-size:13px;white-space:nowrap}
-  .ph-long{display:none} .ph-short{display:inline}
+  .search input{font-size:16px}   /* 16px keeps iOS from zooming in on focus */
   .bigsearch button{padding:0 18px}
   .stats{gap:0;justify-content:space-between;margin-top:26px}
   .stats b{font-size:28px}
