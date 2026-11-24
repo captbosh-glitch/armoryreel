@@ -9,7 +9,8 @@ GENERATED marker; a marked page that this build didn't write (an entry was
 renamed or removed) is deleted. Edit data/ and the templates here, never the output.
 
 Images are looked up on disk, so a page never points at a missing file:
-  weapon art     assets/photos/{art}.jpg, else assets/weapons/{art}.jpg  (art defaults to the slug)
+  weapon art     assets/photos/{art}.jpg, else assets/weapons/{art}.jpg  (art defaults to the slug;
+                 no file: the name stands in, and the home page hero skips the weapon)
   gallery        assets/gallery/{gallery.dir or slug}/{f}
   posters        assets/posters/{poster}.jpg      (no file: the title block stands in)
   characters     assets/characters/{photo}.jpg    (no file: initials stand in)
@@ -92,10 +93,7 @@ def thumb(rel, width):
 
 def weapon_art(w):
     art = w.get('art', w['slug'])
-    found = asset(f'photos/{art}.jpg') or asset(f'weapons/{art}.jpg')
-    if not found:
-        errors.append(f'weapon {w["slug"]}: no image at assets/photos/{art}.jpg or assets/weapons/{art}.jpg')
-    return found
+    return asset(f'photos/{art}.jpg') or asset(f'weapons/{art}.jpg')
 
 
 def gallery(w):
@@ -167,10 +165,18 @@ def char_photo(c, R, tag='div', href=''):
     return f'<{tag} class="photo"{attr}>{inner}</{tag}>'
 
 
+def art_img(w, width, R, alt=''):
+    """The weapon's picture, or its name as a stand-in until the art exists."""
+    rel = ARTS[w['slug']]
+    if rel:
+        return f'<img src="{R}assets/{thumb(rel, width)}" alt="{esc(alt)}" loading="lazy">'
+    return f'<span class="stand">{esc(w["name"])}</span>'
+
+
 def wcard(w, R):
     f = FILM[w['films'][0]]
     media = media_line(w['slug'])
-    return (f'<a class="wcard" href="{R}weapons/{w["slug"]}/"><div class="art"><img src="{R}assets/{thumb(ARTS[w["slug"]], 800)}" alt="" loading="lazy"></div>'
+    return (f'<a class="wcard" href="{R}weapons/{w["slug"]}/"><div class="art">{art_img(w, 800, R)}</div>'
             f'<div class="cap"><h3>{esc(w["name"])}</h3>' + (f'<div class="media mono">{media}</div>' if media else '') +
             f'<div class="sub">{esc(f["title"])} · {f["year"]} · <b>{carriers_line(w)}</b></div></div></a>')
 
@@ -281,13 +287,17 @@ def build_home():
     R = ''
     h = WEAPON[SITE['hero_weapon']]
     hf = FILM[h['films'][0]]
+    # the hero shows hero_weapon without JavaScript; with it, any weapon that has art, picked per visit
+    picks = [{'u': f'weapons/{w["slug"]}/', 'i': f'assets/{thumb(ARTS[w["slug"]], 1400)}', 'n': w['name'],
+              's': f'{esc(FILM[w["films"][0]]["title"])} · {FILM[w["films"][0]]["year"]} · carried by {carriers_line(w)}'}
+             for w in WEAPONS if ARTS[w['slug']]]
     feat = '\n      '.join(wcard(WEAPON[s], R) for s in SITE['featured_weapons'])
     films = '\n      '.join(film_card(FILM[s], R) for s in SITE['home_films'])
     main = f'''<main id="home">
   <div class="hero"><div class="wrap">
     <div>
       <div class="kicker">The movie weapons database</div>
-      <h1>Weapons that<br>stole the scene.</h1>
+      <h1><span>Weapons</span> that<br>stole the scene.</h1>
       <p class="lede">Every blade, blaster, bow and living weapon on screen, in photos and clips. Follow the film. Find the weapon. Meet who carries it.</p>
       <div class="sbox big"><div class="bigsearch"><label class="search"><svg><use href="#i-search"/></svg><input type="search" placeholder="Try “Glaive”, “Aliens” or “Ripley”" data-short="Try “Glaive” or “Ripley”" aria-label="Search films, weapons and characters" autocomplete="off"></label><button type="button">Search</button></div><div class="sresults hide" role="listbox"></div></div>
       <div class="stats">
@@ -303,6 +313,8 @@ def build_home():
         <span class="more">Explore the weapon</span>
       </div>
     </a>
+    <script>(function(){{ var p = {json.dumps(picks, ensure_ascii=False)}, w = p[Math.floor(Math.random() * p.length)], a = document.querySelector('.feature');
+      a.href = w.u; a.querySelector('img').src = w.i; a.querySelector('img').alt = w.n; a.querySelector('h3').textContent = w.n; a.querySelector('.sub').innerHTML = w.s; }})();</script>
   </div></div>
 
   <section><div class="wrap">
@@ -388,7 +400,7 @@ def build_weapon(w):
   <div class="dtop"><div class="wrap">
     <div class="crumbs"><a href="{R}categories/{cat['slug']}/">{esc(cat['name'])}</a><i>/</i><a href="{R}films/{f['slug']}/">{esc(f['title'])} ({f['year']})</a><i>/</i>{esc(w['name'])}</div>
     <div class="dhero">
-      <div class="art{" hasgal" if chip else ""}"><img src="{R}assets/{thumb(ARTS[s], 1600)}" alt="{esc(w['name'])}">{chip}</div>
+      <div class="art{" hasgal" if chip else ""}">{art_img(w, 1600, R, w['name'])}{chip}</div>
       <div class="info">
         <div class="kicker">Weapon / {esc(cat['short'])}</div>
         <h1>{title_lines}</h1>
@@ -589,7 +601,7 @@ def build_search():
     for w in WEAPONS:
         f = FILM[w['films'][0]]
         rows.append({'t': w['name'], 'k': 'Weapon', 's': f'{f["title"]} · {f["year"]}', 'u': f'weapons/{w["slug"]}/',
-                     'i': f'assets/{thumb(ARTS[w["slug"]], 240)}',
+                     'i': f'assets/{thumb(ARTS[w["slug"]], 240)}' if ARTS[w['slug']] else '',
                      'w': ' '.join([FILM[x]['title'] for x in w['films']] + [CHAR[c]['name'] for c in w['carriers']]
                                    + [w.get('type', ''), CAT[w['category']]['name']] + w.get('tags', []))})
     for f in FILMS:

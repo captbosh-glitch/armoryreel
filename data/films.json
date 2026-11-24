@@ -18,7 +18,7 @@
   {"slug": "robocop", "title": "RoboCop", "year": 1987, "category": "sci-fi", "poster": "robocop", "imdb": "tt0093870"},
   {"slug": "predator", "title": "Predator", "year": 1987, "category": "sci-fi"},
   {"slug": "terminator-2", "title": "Terminator 2", "year": 1991, "category": "sci-fi"},
-  {"slug": "the-fifth-element", "title": "The Fifth Element", "year": 1997, "category": "sci-fi"},
+  {"slug": "the-fifth-element", "title": "The Fifth Element", "year": 1997, "category": "sci-fi", "poster": "fifthelement", "imdb": "tt0119116"},
   {"slug": "men-in-black", "title": "Men in Black", "year": 1997, "category": "sci-fi"},
   {"slug": "ghostbusters", "title": "Ghostbusters", "year": 1984, "category": "sci-fi"},
 

@@ -115,5 +115,14 @@
     "lede": "The sword Dar carries from his father in The Beastmaster (1982).",
     "tags": ["Fantasy", "Sword", "Dar"],
     "specs": [["First seen", "The Beastmaster, 1982"], ["Name", "None on record"], ["Sword maker", "Victor Anselmo"]]
+  },
+  {
+    "slug": "zf-1", "art": "zf1", "name": "ZF-1", "title_lines": ["ZF-1"],
+    "category": "sci-fi", "type": "Multi-weapon", "films": ["the-fifth-element"],
+    "carriers": ["zorg"],
+    "lede": "Zorg’s all-in-one weapon in The Fifth Element (1997).",
+    "tags": ["Sci-fi", "Multi-weapon", "Zorg"],
+    "specs": [["First seen", "The Fifth Element, 1997"], ["Maker", "Zorg Industries"], ["Built in", "Rockets, nets, poison arrows, flamethrower"], ["Also", "A little red button"]],
+    "scene": "Zorg shows off every trick the ZF-1 has, and leaves out what the little red button does."
   }
 ]
