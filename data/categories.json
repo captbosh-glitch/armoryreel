@@ -1,0 +1,10 @@
+[
+  {"slug": "firearms", "name": "Screen firearms", "short": "Firearms", "blurb": "Magnums, sidearms & screen legends"},
+  {"slug": "sci-fi", "name": "Sci-fi", "short": "Sci-fi", "blurb": "Blasters, pulse rifles & proton packs"},
+  {"slug": "blades", "name": "Blades & martial arts", "short": "Blades", "blurb": "Katanas, claymores & a six-fingered sword"},
+  {"slug": "fantasy", "name": "Fantasy & superhero", "short": "Fantasy", "blurb": "Sting, Mjölnir & the Glaive"},
+  {"slug": "bows", "name": "Bows", "short": "Bows", "blurb": "From Katniss to explosive arrows"},
+  {"slug": "horror", "name": "Horror", "short": "Horror", "blurb": "Knives, axes, chainsaws & one glove"},
+  {"slug": "living-weapons", "name": "Living weapons", "short": "Living weapons", "blurb": "When the body is the weapon", "counts": "characters"},
+  {"slug": "machines", "name": "Machines & suits", "short": "Machines", "blurb": "Machine minds & armor", "counts": "characters"}
+]

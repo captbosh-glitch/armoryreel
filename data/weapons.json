@@ -1,0 +1,119 @@
+[
+  {
+    "slug": "m41a", "name": "M41A Pulse Rifle", "title_lines": ["M41A", "Pulse Rifle"],
+    "category": "sci-fi", "type": "Rifle", "films": ["aliens", "alien-3"],
+    "carriers": ["hicks", "hudson", "ripley", "colonial-marines"],
+    "lede": "The Colonial Marines’ standard rifle in Aliens (1986).",
+    "tags": ["Sci-fi", "Rifle", "Colonial Marines"],
+    "specs": [["First seen", "Aliens, 1986"], ["Films", "2"], ["Ammo", "10mm caseless, 99 rounds"], ["Underneath", "30mm grenade launcher"]],
+    "scene": "Ripley tapes a pulse rifle to a flamethrower and walks into the hive for Newt.",
+    "gallery": {
+      "photos": [
+        {"f": "m141a5.jpg", "cap": "The squad moves in, pulse rifles and smartgun up", "meta": "Film still"},
+        {"f": "m141a3.jpg", "cap": "Hicks shows Ripley the rifle (note the ammo counter)", "meta": "Film still"},
+        {"f": "m141a4.jpg", "cap": "A Marine aboard the Sulaco", "meta": "Film still"},
+        {"f": "m141a1.jpg", "cap": "The hero prop, side view", "meta": "Studio photo"},
+        {"f": "m141a2.jpg", "cap": "The hero prop, three-quarter view", "meta": "Studio photo"}
+      ],
+      "videos": [
+        {"cap": "Every pulse rifle moment, from a 35mm scan", "meta": "Supercut · Basinova", "dur": "2:30", "yt": "-An42CImewk"}
+      ]
+    }
+  },
+  {
+    "slug": "hans-blaster", "art": "blaster", "name": "Han’s Blaster", "title_lines": ["Han’s", "Blaster"],
+    "category": "sci-fi", "type": "Pistol", "films": ["star-wars", "the-empire-strikes-back", "return-of-the-jedi"],
+    "carriers": ["han-solo"],
+    "lede": "Han Solo’s DL-44 heavy blaster pistol in Star Wars (1977).",
+    "tags": ["Sci-fi", "Pistol", "Han Solo"],
+    "specs": [["First seen", "Star Wars, 1977"], ["Model", "DL-44 heavy blaster"], ["Carried by", "Han Solo"], ["Underneath", "Mauser C96 pistol"]],
+    "scene": "Han shoots Greedo across a cantina table in Mos Eisley.",
+    "gallery": {
+      "dir": "hansolo_blaster",
+      "photos": [
+        {"f": "hansolo1.jpg", "cap": "Han takes aim in Star Wars", "meta": "Film still"},
+        {"f": "hansolo4.jpg", "cap": "Han on Cloud City in The Empire Strikes Back", "meta": "Film still"},
+        {"f": "hansolo3.jpg", "cap": "Han on Endor in Return of the Jedi", "meta": "Film still"},
+        {"f": "hansolo2.jpg", "cap": "The prop, side view", "meta": "Studio photo"},
+        {"f": "hansolo5.jpg", "cap": "The prop, three-quarter view", "meta": "Studio photo"}
+      ],
+      "videos": [
+        {"cap": "Han shoots first: Greedo in the Mos Eisley cantina (original cut)", "meta": "Film clip · Mr Caballero", "dur": "1:15", "yt": "la7uuFsCIrg"},
+        {"cap": "Dinner with Vader: Han opens fire on Cloud City", "meta": "Film clip · CT-5 /501", "dur": "1:12", "yt": "ad9n9qWkVxo"}
+      ]
+    }
+  },
+  {
+    "slug": "glaive", "name": "The Glaive", "title_lines": ["The", "Glaive"],
+    "category": "fantasy", "type": "Throwing blade", "films": ["krull"],
+    "carriers": ["colwyn"],
+    "lede": "Colwyn’s five-bladed throwing star in Krull (1983).",
+    "tags": ["Fantasy", "Throwing blade", "Krull"],
+    "specs": [["First seen", "Krull, 1983"], ["Films", "1"], ["Blades", "Five, spring-out"], ["Prop", "Brass, painted gold"]],
+    "scene": "Colwyn climbs into a mountain cave and pulls the Glaive from molten rock.",
+    "gallery": {
+      "photos": [
+        {"f": "glaive1.jpg", "cap": "Colwyn raises the Glaive, Lyssa behind him", "meta": "Film still"},
+        {"f": "glaive2.jpg", "cap": "Colwyn with the Glaive inside the Black Fortress", "meta": "Film still"},
+        {"f": "glaive4.jpg", "cap": "The prop, blades out", "meta": "Studio photo"},
+        {"f": "glaive3.jpg", "cap": "The prop, close on one blade and its jewel", "meta": "Studio photo"}
+      ],
+      "videos": [
+        {"cap": "Colwyn retrieves the Glaive from the mountain", "meta": "Film clip · Now Scaring", "dur": "9:04", "yt": "haAEWCmdfis"},
+        {"cap": "The Glaive in action", "meta": "Film clip · 80s D&D Fan", "dur": "1:20", "yt": "Jp6zmsmkqSk"}
+      ]
+    }
+  },
+  {
+    "slug": "auto-9", "art": "auto9", "name": "Auto-9", "title_lines": ["Auto-9"],
+    "category": "sci-fi", "type": "Machine pistol", "films": ["robocop"],
+    "carriers": ["robocop"],
+    "lede": "RoboCop’s sidearm in RoboCop (1987).",
+    "tags": ["Sci-fi", "Machine pistol", "RoboCop"],
+    "specs": [["First seen", "RoboCop, 1987"], ["Fire", "Three-round burst"], ["Underneath", "Beretta 93R"], ["Almost used", "Desert Eagle"]],
+    "scene": "The Auto-9 snaps out of a holster built into RoboCop’s thigh."
+  },
+  {
+    "slug": "hattori-hanzo-katana", "art": "katana", "name": "Hattori Hanzo Katana", "title_lines": ["Hattori Hanzo", "Katana"],
+    "category": "blades", "type": "Sword", "films": ["kill-bill-vol-1"],
+    "carriers": ["the-bride"],
+    "lede": "The Bride’s sword in Kill Bill Vol. 1 (2003).",
+    "tags": ["Blades", "Sword", "The Bride"],
+    "specs": [["First seen", "Kill Bill Vol. 1, 2003"], ["Maker", "Hattori Hanzo"], ["The smith", "Fictional"], ["Named after", "A 16th-century samurai"]],
+    "scene": "The Bride takes on the Crazy 88 at the House of Blue Leaves."
+  },
+  {
+    "slug": "beretta-92f", "art": "beretta", "name": "Beretta 92F", "title_lines": ["Beretta", "92F"],
+    "category": "firearms", "type": "Pistol", "films": ["die-hard"],
+    "carriers": ["john-mcclane"],
+    "lede": "John McClane’s sidearm in Die Hard (1988).",
+    "tags": ["Firearms", "Pistol", "John McClane"],
+    "specs": [["First seen", "Die Hard, 1988"], ["Model", "Beretta 92F"], ["In the novel", "Browning Hi-Power"]],
+    "scene": "McClane tapes the Beretta to his back for the last standoff with Gruber."
+  },
+  {
+    "slug": "mp5", "art": "mp5", "name": "MP5", "title_lines": ["MP5"],
+    "category": "firearms", "type": "Submachine gun", "films": ["die-hard"],
+    "carriers": ["grubers-crew", "john-mcclane"],
+    "lede": "The submachine gun of Gruber’s crew in Die Hard (1988).",
+    "tags": ["Firearms", "Submachine gun", "Gruber’s crew"],
+    "specs": [["First seen", "Die Hard, 1988"], ["On set", "Often HK94s dressed as MP5s"]],
+    "scene": "McClane takes an MP5 off a dead terrorist and sends him down in the elevator with a note."
+  },
+  {
+    "slug": "kapa", "art": "kapa", "name": "Dar’s Kapa", "title_lines": ["Dar’s", "Kapa"],
+    "category": "fantasy", "type": "Throwing blade", "films": ["the-beastmaster"],
+    "carriers": ["dar"],
+    "lede": "Dar’s hinged throwing blade in The Beastmaster (1982).",
+    "tags": ["Fantasy", "Throwing blade", "Dar"],
+    "specs": [["First seen", "The Beastmaster, 1982"], ["Type", "Hinged throwing blade"]]
+  },
+  {
+    "slug": "dars-sword", "art": "beastmaster-sword", "name": "Dar’s Sword", "title_lines": ["Dar’s", "Sword"],
+    "category": "fantasy", "type": "Sword", "films": ["the-beastmaster"],
+    "carriers": ["dar"],
+    "lede": "The sword Dar carries from his father in The Beastmaster (1982).",
+    "tags": ["Fantasy", "Sword", "Dar"],
+    "specs": [["First seen", "The Beastmaster, 1982"], ["Name", "None on record"], ["Sword maker", "Victor Anselmo"]]
+  }
+]
