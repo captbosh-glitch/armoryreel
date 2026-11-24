@@ -14,7 +14,8 @@ Images are looked up on disk, so a page never points at a missing file:
   posters        assets/posters/{poster}.jpg      (no file: the title block stands in)
   characters     assets/characters/{photo}.jpg    (no file: initials stand in)
 A bad cross-reference or a missing gallery file stops the build; images on disk
-that no entry uses are listed at the end.
+that no entry uses are listed at the end (except site.json's not_used: images kept on
+purpose, like a mislabeled sketch or art a photo has replaced).
 
 Pages show resized copies from assets/thumbs/{width}/ (made here with Pillow, and
 remade when the original changes); the weapon page hero and the lightbox use the originals.
@@ -636,7 +637,7 @@ def unused_images():
     for folder in ['photos', 'weapons', 'posters', 'characters', 'gallery']:
         for p in sorted((ROOT / 'assets' / folder).rglob('*')):
             rel = p.relative_to(ROOT / 'assets').as_posix()
-            if p.is_file() and p.suffix.lower() in ('.jpg', '.jpeg', '.png', '.webp') and rel not in used:
+            if p.is_file() and p.suffix.lower() in ('.jpg', '.jpeg', '.png', '.webp') and rel not in used and rel not in SITE.get('not_used', []):
                 out.append(rel)
     return out
 

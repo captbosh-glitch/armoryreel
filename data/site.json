@@ -1,5 +1,20 @@
 {
   "hero_weapon": "glaive",
-  "featured_weapons": ["m41a", "auto-9", "hans-blaster"],
-  "home_films": ["aliens", "krull", "die-hard", "kill-bill-vol-1", "robocop", "the-beastmaster"]
+  "featured_weapons": [
+    "m41a",
+    "auto-9",
+    "hans-blaster"
+  ],
+  "home_films": [
+    "aliens",
+    "krull",
+    "die-hard",
+    "kill-bill-vol-1",
+    "robocop",
+    "the-beastmaster"
+  ],
+  "not_used": [
+    "weapons/mp5-foregrip.jpg",
+    "weapons/m41a.jpg"
+  ]
 }
