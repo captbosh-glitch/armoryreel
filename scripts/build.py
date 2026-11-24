@@ -22,7 +22,7 @@ Pages show resized copies from assets/thumbs/{width}/ (made here with Pillow, an
 remade when the original changes); the weapon page hero and the lightbox use the originals.
 The search box reads assets/search-index.json, also written here.
 """
-import hashlib, html, json, sys
+import hashlib, html, json, re, sys
 from PIL import Image
 from pathlib import Path
 
@@ -36,6 +36,8 @@ def load(name):
 
 
 CATS, FILMS, CHARS, WEAPONS, SITE = load('categories'), load('films'), load('characters'), load('weapons'), load('site')
+# films list A-Z everywhere, ignoring a leading "The" or "A"
+FILMS.sort(key=lambda f: re.sub(r'^(the|a) ', '', re.sub(r'[^a-z0-9 ]', '', f['title'].lower())))
 GENRES = load('genres')   # films have a genre; weapons (and living-weapon characters) have a category
 CAT = {c['slug']: c for c in CATS}
 GENRE = {g['slug']: g for g in GENRES}
