@@ -95,7 +95,7 @@ section{padding:56px 0}
 .stats b{display:block;font:700 34px var(--display)}
 .stats .mono{color:var(--muted)}
 .feature{background:var(--panel);border:1px solid var(--line)}
-.feature .art{aspect-ratio:4/3}
+.feature .art{aspect-ratio:16/9}   /* the weapon art's own shape, so nothing is cropped */
 .feature .cap{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;padding:18px 22px 20px}
 .feature h3{font-size:30px}
 .feature .sub{color:var(--muted);font-size:13px;margin-top:4px}
