@@ -11,7 +11,7 @@
   var KIND = {Weapon: 0, Character: 1, Film: 2, Category: 3};
   function norm(t){ return (t || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[’']/g, '').replace(/[^a-z0-9]+/g, ' ').trim(); }
   function load(){
-    if (!loading) loading = fetch(ROOT + 'assets/search-index.json').then(function(r){ return r.json(); }).then(function(rows){
+    if (!loading) loading = fetch(ROOT + 'assets/search-index.json', {cache: 'no-cache'}).then(function(r){ return r.json(); }).then(function(rows){
       INDEX = rows.map(function(r){ r.tw = norm(r.t).split(' '); r.aw = (norm(r.t) + ' ' + norm(r.s) + ' ' + norm(r.w)).split(' '); return r; });
     });
     return loading;

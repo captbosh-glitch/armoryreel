@@ -20,7 +20,7 @@ Pages show resized copies from assets/thumbs/{width}/ (made here with Pillow, an
 remade when the original changes); the weapon page hero and the lightbox use the originals.
 The search box reads assets/search-index.json, also written here.
 """
-import html, json, sys
+import hashlib, html, json, sys
 from PIL import Image
 from pathlib import Path
 
@@ -219,6 +219,11 @@ def specs_html(rows):
 SEARCH = ('<label class="search"><svg><use href="#i-search"/></svg>'
           '<input type="search" placeholder="Film, weapon or character…" aria-label="Search films, weapons and characters" autocomplete="off"></label>'
           '<div class="sresults hide" role="listbox"></div>')
+def version(rel):
+    """A short content hash for assets/{rel}, so browsers drop a cached copy when it changes."""
+    return hashlib.sha1((ROOT / 'assets' / rel).read_bytes()).hexdigest()[:8]
+
+
 NAV = [('films', 'Films'), ('weapons', 'Weapons'), ('characters', 'Characters'), ('categories', 'Categories')]
 SUFFIX = ' | Armory.Reel'
 
@@ -238,7 +243,7 @@ def page(path, title, desc, main, active='', tail=''):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{R}assets/site.css">
+<link rel="stylesheet" href="{R}assets/site.css?v={version("site.css")}">
 </head>
 <body data-root="{R}">
 
@@ -260,7 +265,7 @@ def page(path, title, desc, main, active='', tail=''):
   <div><div class="logo">Armory<span>.Reel</span></div>An independent guide to the weapons of cinema.</div>
   <div class="fine">A fan project. Posters, stills, photos and clips belong to their owners.</div>
 </div></footer>
-{tail}<script src="{R}assets/site.js"></script>
+{tail}<script src="{R}assets/site.js?v={version("site.js")}"></script>
 </body>
 </html>
 '''
