@@ -16,6 +16,10 @@
   {"slug": "rambo-iii", "title": "Rambo III", "year": 1988, "genre": "action", "poster": "rambo3", "imdb": "tt0095956"},
   {"slug": "rambo", "title": "Rambo", "year": 2008, "genre": "action", "poster": "rambo4", "imdb": "tt0462499"},
   {"slug": "rambo-last-blood", "title": "Rambo: Last Blood", "year": 2019, "genre": "action", "poster": "rambo5", "imdb": "tt1206885"},
+  {"slug": "braveheart", "title": "Braveheart", "year": 1995, "genre": "action"},
+  {"slug": "gladiator", "title": "Gladiator", "year": 2000, "genre": "action"},
+  {"slug": "300", "title": "300", "year": 2006, "genre": "action"},
+  {"slug": "the-princess-bride", "title": "The Princess Bride", "year": 1987, "genre": "action"},
 
   {"slug": "star-wars", "title": "Star Wars", "year": 1977, "genre": "sci-fi", "poster": "starwars", "imdb": "tt0076759"},
   {"slug": "the-empire-strikes-back", "title": "The Empire Strikes Back", "year": 1980, "genre": "sci-fi", "poster": "empirestrikesback", "imdb": "tt0080684"},
@@ -36,10 +40,6 @@
   {"slug": "seven-samurai", "title": "Seven Samurai", "year": 1954, "genre": "martial-arts"},
   {"slug": "crouching-tiger-hidden-dragon", "title": "Crouching Tiger, Hidden Dragon", "year": 2000, "genre": "martial-arts"},
   {"slug": "enter-the-dragon", "title": "Enter the Dragon", "year": 1973, "genre": "martial-arts"},
-  {"slug": "braveheart", "title": "Braveheart", "year": 1995, "genre": "martial-arts"},
-  {"slug": "gladiator", "title": "Gladiator", "year": 2000, "genre": "martial-arts"},
-  {"slug": "300", "title": "300", "year": 2006, "genre": "martial-arts"},
-  {"slug": "the-princess-bride", "title": "The Princess Bride", "year": 1987, "genre": "martial-arts"},
 
   {"slug": "the-fellowship-of-the-ring", "title": "The Fellowship of the Ring", "year": 2001, "genre": "fantasy"},
   {"slug": "the-avengers", "title": "The Avengers", "year": 2012, "genre": "fantasy"},
