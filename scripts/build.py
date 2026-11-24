@@ -36,7 +36,9 @@ def load(name):
 
 
 CATS, FILMS, CHARS, WEAPONS, SITE = load('categories'), load('films'), load('characters'), load('weapons'), load('site')
+GENRES = load('genres')   # films have a genre; weapons (and living-weapon characters) have a category
 CAT = {c['slug']: c for c in CATS}
+GENRE = {g['slug']: g for g in GENRES}
 FILM = {f['slug']: f for f in FILMS}
 CHAR = {c['slug']: c for c in CHARS}
 WEAPON = {w['slug']: w for w in WEAPONS}
@@ -49,8 +51,8 @@ for table, rows in (('categories', CATS), ('films', FILMS), ('characters', CHARS
             errors.append(f'{table}: duplicate slug {r["slug"]}')
         seen.add(r['slug'])
 for f in FILMS:
-    if f['category'] not in CAT:
-        errors.append(f'film {f["slug"]}: unknown category {f["category"]}')
+    if f['genre'] not in GENRE:
+        errors.append(f'film {f["slug"]}: unknown genre {f["genre"]}')
 for c in CHARS:
     errors += [f'character {c["slug"]}: unknown film {s}' for s in c['films'] if s not in FILM]
     if c.get('category') and c['category'] not in CAT:
@@ -198,8 +200,8 @@ def cat_count(c):
     if c.get('counts') == 'characters':
         n = len([x for x in CHARS if x.get('category') == c['slug']])
         return plural(n, 'character') if n else ''
-    n = len([f for f in FILMS if f['category'] == c['slug']])
-    return plural(n, 'film') if n else ''
+    n = len([w for w in WEAPONS if w['category'] == c['slug']])
+    return plural(n, 'weapon') if n else ''
 
 
 def cat_cards(R):
@@ -450,32 +452,28 @@ def build_weapon(w):
 
 
 # ---------- film pages ----------
-def cat_lower(cat):
-    return cat['name'] if cat['slug'] == 'sci-fi' else cat['name'].lower()
-
-
 def build_film(f):
     R = '../../'
-    cat = CAT[f['category']]
+    g = GENRE[f['genre']]
     ws, cs = W_BY_FILM[f['slug']], C_BY_FILM[f['slug']]
-    specs = specs_html([('Year', str(f['year'])), ('Category', cat['name']),
+    specs = specs_html([('Year', str(f['year'])), ('Genre', g['name']),
                         ('Weapons', str(len(ws)) if ws else 'Coming soon'), ('Characters', str(len(cs)) if cs else '-')])
     ext = f' {imdb("title/" + f["imdb"], f["title"], "IMDb")}' if f.get('imdb') else ''
     lede = (f'{plural(len(ws), "weapon")} on file, and who carries {"it" if len(ws) == 1 else "them"}.' if ws
             else 'The weapons for this film are coming soon.')
-    more = sorted([x for x in FILMS if x['category'] == f['category'] and x is not f],
+    more = sorted([x for x in FILMS if x['genre'] == f['genre'] and x is not f],
                   key=lambda x: (0 if W_BY_FILM[x['slug']] else 1, FILMS.index(x)))
     weapons = f'<div class="cards3">{"".join(wcard(w, R) for w in ws)}</div>' if ws else empty('No weapons on file yet.')
     chars = sec('Characters', f'<div class="chars">{"".join(char_card(c, R) for c in cs)}</div>') if cs else ''
-    more_html = sec(f'More {cat_lower(cat)}', f'<div class="films">{"".join(film_card(x, R) for x in more[:6])}</div>',
-                    f'<a class="more" href="{R}categories/{cat["slug"]}/">All {cat_lower(cat)}</a>') if more else ''
+    more_html = sec(f'More {esc(g["name"])}', f'<div class="films">{"".join(film_card(x, R) for x in more[:6])}</div>',
+                    f'<a class="more" href="{R}films/#{g["slug"]}">See all</a>') if more else ''
     main = f'''<main>
   <div class="dtop"><div class="wrap">
-    <div class="crumbs"><a href="{R}films/">Films</a><i>/</i><a href="{R}categories/{cat['slug']}/">{esc(cat['name'])}</a><i>/</i>{esc(f['title'])}</div>
+    <div class="crumbs"><a href="{R}films/">Films</a><i>/</i><a href="{R}films/#{g['slug']}">{esc(g['name'])}</a><i>/</i>{esc(f['title'])}</div>
     <div class="phero">
       {poster(f, R)}
       <div class="info">
-        <div class="kicker">Film / {esc(cat['short'])} / {f['year']}</div>
+        <div class="kicker">Film / {esc(g['short'])} / {f['year']}</div>
         <h1>{esc(f['title'])}</h1>
         <p class="lede">{lede}{ext}</p>
         <div class="specs">{specs}</div>
@@ -553,21 +551,22 @@ def build_lists():
     R = '../'
     home = f'<a href="{R}">Home</a><i>/</i>'
 
-    def grouped(rows, card, grid):
+    def grouped(rows, card, grid, groups, key, link):
         out = []
-        for c in CATS:
-            mine = [r for r in rows if r['category'] == c['slug']]
+        for g in groups:
+            mine = [r for r in rows if r[key] == g['slug']]
             if mine:
-                out.append(f'<div class="group"><h2><a href="{R}categories/{c["slug"]}/">{esc(c["name"])}</a></h2>'
+                title = f'<a href="{R}categories/{g["slug"]}/">{esc(g["name"])}</a>' if link else esc(g['name'])
+                out.append(f'<div class="group" id="{g["slug"]}"><h2>{title}</h2>'
                            f'<div class="{grid}">{"".join(card(r, R) for r in mine)}</div></div>')
         return ''.join(out)
 
     nfilms = len({f for w in WEAPONS for f in w['films']})
     lede = f'{plural(len(WEAPONS), "weapon")} from {plural(nfilms, "film")}, by category.'
     list_page('weapons/index.html', f'All weapons{SUFFIX}', f'Every weapon on Armory.Reel: {lede}', 'weapons',
-              home + 'Weapons', 'Weapons', lede, grouped(WEAPONS, wcard, 'cards3'))
+              home + 'Weapons', 'Weapons', lede, grouped(WEAPONS, wcard, 'cards3', CATS, 'category', True))
     list_page('films/index.html', f'All films{SUFFIX}', f'{len(FILMS)} films on Armory.Reel, from Seven Samurai to Dune, and the weapons in them.', 'films',
-              home + 'Films', 'Films', f'{len(FILMS)} films, from Seven Samurai to Dune.', grouped(FILMS, film_card, 'films'))
+              home + 'Films', 'Films', f'{len(FILMS)} films, from Seven Samurai to Dune, by genre.', grouped(FILMS, film_card, 'films', GENRES, 'genre', False))
     lede = f'{plural(len(CHARS), "character")} and the weapons they carry.'
     list_page('characters/index.html', f'All characters{SUFFIX}', f'{lede[0].upper()}{lede[1:]}', 'characters',
               home + 'Characters', 'Characters', lede, f'<div class="chars">{"".join(char_card(c, R) for c in CHARS)}</div>')
@@ -579,7 +578,7 @@ def build_lists():
     for c in CATS:
         ws = [w for w in WEAPONS if w['category'] == c['slug']]
         cs = [x for x in CHARS if x.get('category') == c['slug']]
-        fs = sorted([f for f in FILMS if f['category'] == c['slug']], key=lambda x: (0 if W_BY_FILM[x['slug']] else 1, FILMS.index(x)))
+        fs = [f for f in FILMS if any(w['category'] == c['slug'] for w in W_BY_FILM[f['slug']])]
         parts = []
         if ws:
             parts.append(sec('Weapons', f'<div class="cards3">{"".join(wcard(w, R) for w in ws)}</div>'))
@@ -609,7 +608,7 @@ def build_search():
         ws = W_BY_FILM[f['slug']]
         rows.append({'t': f['title'], 'k': 'Film', 's': f'{f["year"]} · ' + (plural(len(ws), 'weapon') if ws else 'Coming soon'),
                      'u': f'films/{f["slug"]}/', 'i': f'assets/{thumb(rel, 240)}' if rel else '',
-                     'w': ' '.join([str(f['year']), CAT[f['category']]['name']] + [w['name'] for w in ws])})
+                     'w': ' '.join([str(f['year']), GENRE[f['genre']]['name']] + [w['name'] for w in ws])})
     for c in CHARS:
         rel = asset(f'characters/{c["photo"]}.jpg') if c.get('photo') else None
         rows.append({'t': c['name'], 'k': 'Character', 's': c.get('actor') or c.get('note', ''), 'u': f'characters/{c["slug"]}/',

@@ -1,0 +1,7 @@
+[
+  {"slug": "action", "name": "Action, Adventure & Thriller", "short": "Action"},
+  {"slug": "sci-fi", "name": "Sci-fi", "short": "Sci-fi"},
+  {"slug": "martial-arts", "name": "Martial arts", "short": "Martial arts"},
+  {"slug": "fantasy", "name": "Fantasy & superhero", "short": "Fantasy"},
+  {"slug": "horror", "name": "Horror", "short": "Horror"}
+]
