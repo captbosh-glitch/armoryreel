@@ -124,7 +124,9 @@
         {"f": "beretta2.jpg", "cap": "McClane checks around a door, Beretta ready", "meta": "Film still"},
         {"f": "beretta3.jpg", "cap": "Hurt but still aiming", "meta": "Film still"}
       ],
-      "videos": []
+      "videos": [
+        {"cap": "Welcome to the party, pal", "meta": "Film clip · Movieclips", "dur": "2:41", "yt": "I6wRZCV7naE"}
+      ]
     }
   },
   {
