@@ -116,7 +116,16 @@
     "lede": "John McClane’s sidearm in Die Hard (1988).",
     "tags": ["Firearms", "Pistol", "John McClane"],
     "specs": [["First seen", "Die Hard, 1988"], ["Model", "Beretta 92F"], ["In the novel", "Browning Hi-Power"]],
-    "scene": "McClane tapes the Beretta to his back for the last standoff with Gruber."
+    "scene": "McClane tapes the Beretta to his back for the last standoff with Gruber.",
+    "gallery": {
+      "dir": "diehard",
+      "photos": [
+        {"f": "beretta1.jpg", "cap": "McClane gets the drop on one of Gruber’s men", "meta": "Film still"},
+        {"f": "beretta2.jpg", "cap": "McClane checks around a door, Beretta ready", "meta": "Film still"},
+        {"f": "beretta3.jpg", "cap": "Hurt but still aiming", "meta": "Film still"}
+      ],
+      "videos": []
+    }
   },
   {
     "slug": "mp5", "art": "mp5", "name": "MP5", "title_lines": ["MP5"],
@@ -125,7 +134,15 @@
     "lede": "The submachine gun of Gruber’s crew in Die Hard (1988).",
     "tags": ["Firearms", "Submachine gun", "Gruber’s crew"],
     "specs": [["First seen", "Die Hard, 1988"], ["On set", "Often HK94s dressed as MP5s"]],
-    "scene": "McClane takes an MP5 off a dead terrorist and sends him down in the elevator with a note."
+    "scene": "McClane takes an MP5 off a dead terrorist and sends him down in the elevator with a note.",
+    "gallery": {
+      "dir": "diehard",
+      "photos": [
+        {"f": "mp52.jpg", "cap": "McClane with a captured MP5 and a radio", "meta": "Film still"},
+        {"f": "mp51.jpg", "cap": "McClane lines up a shot from the floor", "meta": "Film still"}
+      ],
+      "videos": []
+    }
   },
   {
     "slug": "kapa", "art": "kapa", "name": "Dar’s Kapa", "title_lines": ["Dar’s", "Kapa"],
