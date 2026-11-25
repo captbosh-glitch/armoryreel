@@ -634,7 +634,7 @@ def remove_stale():
     """Delete marked pages this build didn't write (a renamed or removed entry)."""
     gone = []
     for d in OUTPUT_DIRS:
-        for p in (ROOT / d).rglob('index.html'):
+        for p in list((ROOT / d).rglob('index.html')):   # list first: removing a folder mid-walk breaks rglob
             if p not in written and GENERATED in p.read_text():
                 p.unlink()
                 gone.append(p.relative_to(ROOT).as_posix())
