@@ -141,9 +141,12 @@
       "dir": "diehard",
       "photos": [
         {"f": "mp52.jpg", "cap": "McClane with a captured MP5 and a radio", "meta": "Film still"},
-        {"f": "mp51.jpg", "cap": "McClane lines up a shot from the floor", "meta": "Film still"}
+        {"f": "mp51.jpg", "cap": "McClane lines up a shot from the floor", "meta": "Film still"},
+        {"f": "mp53.jpg", "cap": "An MP5 with its stock collapsed and a sling", "meta": "Studio photo"}
       ],
-      "videos": []
+      "videos": [
+        {"cap": "Shootout on the Nakatomi Tower roof", "meta": "Film clip · Movie Kamikaze", "dur": "4:31", "yt": "45mPvG6q75M"}
+      ]
     }
   },
   {
