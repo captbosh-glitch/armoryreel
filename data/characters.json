@@ -10,5 +10,17 @@
   {"slug": "john-mcclane", "name": "John McClane", "photo": "johnmcclane", "actor": "Bruce Willis", "imdb": "nm0000246", "films": ["die-hard"]},
   {"slug": "grubers-crew", "name": "Gruber’s crew", "photo": "gruberscrew", "note": "The Nakatomi heist team", "films": ["die-hard"]},
   {"slug": "dar", "name": "Dar", "photo": "dar", "actor": "Marc Singer", "imdb": "nm0001743", "films": ["the-beastmaster"]},
-  {"slug": "zorg", "name": "Zorg", "photo": "zorg", "actor": "Gary Oldman", "imdb": "nm0000198", "films": ["the-fifth-element"]}
+  {"slug": "zorg", "name": "Zorg", "photo": "zorg", "actor": "Gary Oldman", "imdb": "nm0000198", "films": ["the-fifth-element"]},
+  {"slug": "matrix", "name": "John Matrix", "actor": "Arnold Schwarzenegger", "imdb": "nm0000216", "films": ["commando"]},
+  {"slug": "joe-cox", "name": "Joe Cox", "actor": "Jesse D. Goins", "imdb": "nm0324795", "films": ["robocop"]},
+  {"slug": "t-1000", "name": "T-1000", "actor": "Robert Patrick", "imdb": "nm0001598", "films": ["terminator-2"], "category": "machines"},
+  {"slug": "gregori", "name": "Gregori", "actor": "Omer Barnea", "imdb": "nm0055455", "films": ["john-wick"]},
+  {"slug": "john-rambo", "name": "John Rambo", "actor": "Sylvester Stallone", "imdb": "nm0000230", "films": ["rambo-first-blood-part-ii"]},
+  {"slug": "dutchs-team", "name": "Dutch’s team", "note": "The commando rescue squad", "films": ["predator"]},
+  {"slug": "lapd", "name": "LAPD", "note": "The cops in the middle of the gang war", "films": ["predator-2"]},
+  {"slug": "swat-team", "name": "SWAT team", "note": "The officers at the Cyberdyne siege", "films": ["terminator-2"]},
+  {"slug": "llewelyn-moss", "name": "Llewelyn Moss", "actor": "Josh Brolin", "imdb": "nm0000982", "films": ["no-country-for-old-men"]},
+  {"slug": "tarasovs-men", "name": "Tarasov’s men", "note": "Viggo Tarasov’s mob", "films": ["john-wick"]},
+  {"slug": "santinos-enforcers", "name": "Santino’s enforcers", "note": "Santino D’Antonio’s guards", "films": ["john-wick-chapter-2"]},
+  {"slug": "bowery-kings-men", "name": "The Bowery King’s men", "note": "The Bowery King’s street crew", "films": ["john-wick-chapter-3-parabellum"]}
 ]
