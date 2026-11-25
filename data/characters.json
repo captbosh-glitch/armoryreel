@@ -9,6 +9,6 @@
   {"slug": "the-bride", "name": "The Bride", "actor": "Uma Thurman", "imdb": "nm0000235", "films": ["kill-bill-vol-1"]},
   {"slug": "john-mcclane", "name": "John McClane", "actor": "Bruce Willis", "imdb": "nm0000246", "films": ["die-hard"]},
   {"slug": "grubers-crew", "name": "Gruber’s crew", "note": "The Nakatomi heist team", "films": ["die-hard"]},
-  {"slug": "dar", "name": "Dar", "actor": "Marc Singer", "films": ["the-beastmaster"]},
+  {"slug": "dar", "name": "Dar", "photo": "dar", "actor": "Marc Singer", "imdb": "nm0001743", "films": ["the-beastmaster"]},
   {"slug": "zorg", "name": "Zorg", "photo": "zorg", "actor": "Gary Oldman", "imdb": "nm0000198", "films": ["the-fifth-element"]}
 ]

@@ -106,7 +106,16 @@
     "carriers": ["dar"],
     "lede": "Dar’s hinged throwing blade in The Beastmaster (1982).",
     "tags": ["Fantasy", "Throwing blade", "Dar"],
-    "specs": [["First seen", "The Beastmaster, 1982"], ["Type", "Hinged throwing blade"]]
+    "specs": [["First seen", "The Beastmaster, 1982"], ["Type", "Hinged throwing blade"]],
+    "gallery": {
+      "photos": [
+        {"f": "kapa2.jpg", "cap": "Dar holds the Kapa, blades folded", "meta": "Film still"},
+        {"f": "kapa1.jpg", "cap": "The prop, blades out", "meta": "Studio photo"}
+      ],
+      "videos": [
+        {"cap": "The best of The Beastmaster, Kapa included", "meta": "Film clips · JoBlo Movie Clips", "dur": "8:10", "yt": "NsjNtIT4zT4"}
+      ]
+    }
   },
   {
     "slug": "dars-sword", "art": "beastmaster-sword", "name": "Dar’s Sword", "title_lines": ["Dar’s", "Sword"],
