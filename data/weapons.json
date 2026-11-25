@@ -123,7 +123,20 @@
     "carriers": ["dar"],
     "lede": "The sword Dar carries from his father in The Beastmaster (1982).",
     "tags": ["Fantasy", "Sword", "Dar"],
-    "specs": [["First seen", "The Beastmaster, 1982"], ["Name", "None on record"], ["Sword maker", "Victor Anselmo"]]
+    "specs": [["First seen", "The Beastmaster, 1982"], ["Name", "None on record"], ["Sword maker", "Victor Anselmo"]],
+    "gallery": {
+      "dir": "beastmastersword",
+      "photos": [
+        {"f": "beastmaster1.jpg", "cap": "Dar raises the sword", "meta": "Film still"},
+        {"f": "beastmaster3.jpg", "cap": "Dar draws the sword from its scabbard", "meta": "Film still"},
+        {"f": "beastmaster2.jpg", "cap": "Dar’s blade meets a Winged One", "meta": "Film still"},
+        {"f": "beastmaster4.jpg", "cap": "Dar fights on the pyramid steps", "meta": "Film still"},
+        {"f": "beastmaster5.jpg", "cap": "The sword, side view", "meta": "Studio photo"}
+      ],
+      "videos": [
+        {"cap": "Dar fights the Jun leader", "meta": "Fight scene · DarkEqualizer", "dur": "2:28", "yt": "ga0qYiSASZM"}
+      ]
+    }
   },
   {
     "slug": "zf-1", "art": "zf1", "name": "ZF-1", "title_lines": ["ZF-1"],
