@@ -71,7 +71,21 @@
     "lede": "RoboCop’s sidearm in RoboCop (1987).",
     "tags": ["Sci-fi", "Machine pistol", "RoboCop"],
     "specs": [["First seen", "RoboCop, 1987"], ["Fire", "Three-round burst"], ["Underneath", "Beretta 93R"], ["Almost used", "Desert Eagle"]],
-    "scene": "The Auto-9 snaps out of a holster built into RoboCop’s thigh."
+    "scene": "The Auto-9 snaps out of a holster built into RoboCop’s thigh.",
+    "gallery": {
+      "dir": "robocop",
+      "photos": [
+        {"f": "robocop1.jpg", "cap": "RoboCop shows off at the police firing range", "meta": "Film still"},
+        {"f": "robocop3.jpg", "cap": "RoboCop takes aim on patrol", "meta": "Film still"},
+        {"f": "robocop4.jpg", "cap": "The Auto-9 fires mid-shootout", "meta": "Film still"},
+        {"f": "robocop2.jpg", "cap": "The prop, side view", "meta": "Studio photo"}
+      ],
+      "videos": [
+        {"cap": "RoboCop clears the cocaine factory", "meta": "Film clip · Cyboman Gaming", "dur": "2:41", "yt": "RcRP9Hxv5n8"},
+        {"cap": "RoboCop at the firing range", "meta": "Film clip · RED Lion Movie Shorts", "dur": "1:15", "yt": "k2FovX0zVVE"},
+        {"cap": "RoboCop, the full movie (free with ads, plays on YouTube)", "meta": "Full movie · YouTube Movies", "dur": "1:27:27", "yt": "3nquIi7xyvk"}
+      ]
+    }
   },
   {
     "slug": "hattori-hanzo-katana", "art": "katana", "name": "Hattori Hanzo Katana", "title_lines": ["Hattori Hanzo", "Katana"],

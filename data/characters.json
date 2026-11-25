@@ -5,7 +5,7 @@
   {"slug": "colonial-marines", "name": "Colonial Marines", "photo": "colonial_marines", "note": "The whole squad", "films": ["aliens"]},
   {"slug": "han-solo", "name": "Han Solo", "photo": "hansolo", "actor": "Harrison Ford", "imdb": "nm0000148", "films": ["star-wars", "the-empire-strikes-back", "return-of-the-jedi"]},
   {"slug": "colwyn", "name": "Colwyn", "photo": "colwyn", "actor": "Ken Marshall", "imdb": "nm0550989", "films": ["krull"]},
-  {"slug": "robocop", "name": "RoboCop", "actor": "Peter Weller", "imdb": "nm0000693", "films": ["robocop"], "category": "living-weapons"},
+  {"slug": "robocop", "name": "RoboCop", "photo": "robocop", "actor": "Peter Weller", "imdb": "nm0000693", "films": ["robocop"], "category": "living-weapons"},
   {"slug": "the-bride", "name": "The Bride", "actor": "Uma Thurman", "imdb": "nm0000235", "films": ["kill-bill-vol-1"]},
   {"slug": "john-mcclane", "name": "John McClane", "actor": "Bruce Willis", "imdb": "nm0000246", "films": ["die-hard"]},
   {"slug": "grubers-crew", "name": "Gruber’s crew", "note": "The Nakatomi heist team", "films": ["die-hard"]},
