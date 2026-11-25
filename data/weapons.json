@@ -133,7 +133,7 @@
   {
     "slug": "mp5", "art": "mp5", "name": "MP5", "title_lines": ["MP5"],
     "category": "firearms", "type": "Submachine gun", "films": ["die-hard", "rambo-first-blood-part-ii", "commando", "predator", "predator-2", "terminator-2", "no-country-for-old-men", "john-wick", "john-wick-chapter-2", "john-wick-chapter-3-parabellum"],
-    "carriers": ["grubers-crew", "john-mcclane", "john-rambo", "matrix", "dutchs-team", "lapd", "swat-team", "t-1000", "llewelyn-moss", "tarasovs-men", "santinos-enforcers", "bowery-kings-men"],
+    "carriers": ["grubers-crew", "john-mcclane", "john-rambo", "matrix", "dutchs-team", "swat-team", "t-1000", "llewelyn-moss"],
     "lede": "The submachine gun of Gruber’s crew in Die Hard (1988).",
     "tags": ["Firearms", "Submachine gun", "Gruber’s crew"],
     "specs": [["First seen", "Die Hard, 1988"], ["On set", "Often HK94s dressed as MP5s"]],
