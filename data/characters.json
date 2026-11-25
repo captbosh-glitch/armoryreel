@@ -18,5 +18,6 @@
   {"slug": "john-rambo", "name": "John Rambo", "photo": "rambo", "actor": "Sylvester Stallone", "imdb": "nm0000230", "films": ["rambo-first-blood-part-ii"]},
   {"slug": "dutchs-team", "name": "Dutch’s team", "photo": "dutchsteam", "note": "The commando rescue squad", "films": ["predator"]},
   {"slug": "swat-team", "name": "SWAT team", "photo": "swat", "note": "The officers at the Cyberdyne siege", "films": ["terminator-2"]},
-  {"slug": "llewelyn-moss", "name": "Llewelyn Moss", "photo": "llewelynmoss", "actor": "Josh Brolin", "imdb": "nm0000982", "films": ["no-country-for-old-men"]}
+  {"slug": "llewelyn-moss", "name": "Llewelyn Moss", "photo": "llewelynmoss", "actor": "Josh Brolin", "imdb": "nm0000982", "films": ["no-country-for-old-men"]},
+  {"slug": "t-800", "name": "The Terminator", "photo": "terminator", "actor": "Arnold Schwarzenegger", "imdb": "nm0000216", "films": ["the-terminator"], "category": "machines"}
 ]
