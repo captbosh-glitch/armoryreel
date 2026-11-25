@@ -30,7 +30,7 @@
   <div class="dtop"><div class="wrap">
     <div class="crumbs"><a href="../../categories/sci-fi/">Sci-fi</a><i>/</i><a href="../../films/the-fifth-element/">The Fifth Element (1997)</a><i>/</i>ZF-1</div>
     <div class="dhero">
-      <div class="art"><span class="stand">ZF-1</span></div>
+      <div class="art hasgal"><span class="stand">ZF-1</span><a class="galchip" href="#gallery">&#9654; 1 video</a></div>
       <div class="info">
         <div class="kicker">Weapon / Sci-fi</div>
         <h1>ZF-1</h1>
@@ -43,9 +43,15 @@
   </div></div>
 
   <div class="wrap">
-    
+    <section id="gallery">
+      <div class="sec-head"><h2>Gallery</h2>
+        <div class="gtabs" role="tablist"><button data-t="photos" role="tab" aria-selected="false" hidden>Photos <span>0</span></button><button class="on" data-t="videos" role="tab" aria-selected="true">Videos <span>1</span></button></div>
+      </div>
+      <div class="gal few hide" id="galPhotos"></div>
+      <div class="gal vids" id="galVideos"><button class="gi" data-k="videos" data-i="0"><span class="th"><span class="slot"><b>1</b>Video</span><img src="https://i.ytimg.com/vi/7jVsQToSfag/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span><span class="dur">2:39</span></span><span class="gcap">Zorg presents the ZF-1<span class="mono">Film clip · Movieclips</span></span></button></div>
+    </section>
 
-    <section><div class="two">
+    <section style="padding-top:0"><div class="two">
       <div>
         <div class="sec-head"><h2>Appears in</h2></div>
         <div class="appears"><div class="film"><a class="poster" href="../../films/the-fifth-element/"><span>The Fifth Element</span><img src="../../assets/thumbs/480/posters/fifthelement.jpg" alt="" loading="lazy"></a><div class="cap"><h3><a href="../../films/the-fifth-element/">The Fifth Element</a></h3><div class="sub">1997 · <a class="ext" href="https://www.imdb.com/title/tt0119116/" target="_blank" rel="noopener" aria-label="The Fifth Element on IMDb (opens in a new tab)">IMDb</a></div></div></div></div>
@@ -67,6 +73,14 @@
   <div><div class="logo">Armory<span>.Reel</span></div>An independent guide to the weapons of cinema.</div>
   <div class="fine">A fan project. Posters, stills, photos and clips belong to their owners.</div>
 </div></footer>
+
+<div class="lb hide" id="lb" role="dialog" aria-modal="true" aria-label="Gallery viewer">
+  <button class="lb-x" aria-label="Close">&times;</button>
+  <button class="lb-nav prev" aria-label="Previous">&#8249;</button>
+  <figure><div class="lb-media" id="lbMedia"></div><figcaption><b id="lbCap"></b><span class="mono" id="lbMeta"></span></figcaption></figure>
+  <button class="lb-nav next" aria-label="Next">&#8250;</button>
+</div>
+<script type="application/json" id="gallery-data">{"photos": [], "videos": [{"yt": "7jVsQToSfag", "cap": "Zorg presents the ZF-1", "meta": "Film clip · Movieclips", "dur": "2:39"}]}</script>
 <script src="../../assets/site.js?v=ff6add47"></script>
 </body>
 </html>
