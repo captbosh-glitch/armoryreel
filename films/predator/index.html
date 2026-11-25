@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../../assets/site.css?v=eb0d0b24">
+<link rel="stylesheet" href="../../assets/site.css?v=8070d9f5">
 </head>
 <body data-root="../../">
 
@@ -42,8 +42,15 @@
 
   <section><div class="wrap">
     <div class="sec-head"><h2>Weapons</h2></div>
-    <div class="cards3"><a class="wcard" href="../../weapons/mp5/"><div class="art"><img src="../../assets/thumbs/800/weapons/mp5.jpg" alt="" loading="lazy"></div><div class="cap"><h3>MP5</h3><div class="media mono">3 photos · 2 videos</div><div class="sub">Die Hard · 1988 · <b>John McClane, John Rambo, John Matrix, T-1000 &amp; Llewelyn Moss</b></div></div></a></div>
+    <div class="cards3"><a class="wcard" href="../../weapons/mp5/"><div class="art"><img src="../../assets/thumbs/800/weapons/mp5.jpg" alt="" loading="lazy"></div><div class="cap"><h3>MP5</h3><div class="media mono">4 photos · 2 videos</div><div class="sub">Die Hard · 1988 · <b>John McClane, John Rambo, John Matrix, T-1000 &amp; Llewelyn Moss</b></div></div></a></div>
   </div></section>
+  <div class="wrap"><section id="gallery">
+      <div class="sec-head"><h2>Gallery</h2>
+        <div class="gtabs" role="tablist"><button class="on" data-t="photos" role="tab" aria-selected="true">Photos <span>1</span></button><button data-t="videos" role="tab" aria-selected="false" hidden>Videos <span>0</span></button></div>
+      </div>
+      <div class="gal few" id="galPhotos"><button class="gi solo" data-k="photos" data-i="0" data-f="predator"><span class="th"><span class="slot"><b>1</b>Photo</span><img src="../../assets/thumbs/800/gallery/predator/predator1.jpg" alt="" loading="lazy"></span><span class="gcap">Dutch’s team in the jungle<span class="mono">Film still · MP5</span></span></button></div>
+      <div class="gal vids hide" id="galVideos"></div>
+    </section></div>
   <section style="padding-top:0"><div class="wrap">
     <div class="sec-head"><h2>Characters</h2></div>
     <div class="chars"><a class="char" href="../../characters/dutchs-team/"><div class="photo"><img src="../../assets/thumbs/480/characters/dutchsteam.jpg" alt="" loading="lazy"></div><div class="cap"><h3>Dutch’s team</h3><div class="sub">The commando rescue squad</div></div></a></div>
@@ -58,6 +65,14 @@
   <div><div class="logo">Armory<span>.Reel</span></div>An independent guide to the weapons of cinema.</div>
   <div class="fine">A fan project. Posters, stills, photos and clips belong to their owners.</div>
 </div></footer>
-<script src="../../assets/site.js?v=ff6add47"></script>
+
+<div class="lb hide" id="lb" role="dialog" aria-modal="true" aria-label="Gallery viewer">
+  <button class="lb-x" aria-label="Close">&times;</button>
+  <button class="lb-nav prev" aria-label="Previous">&#8249;</button>
+  <figure><div class="lb-media" id="lbMedia"></div><figcaption><b id="lbCap"></b><span class="mono" id="lbMeta"></span></figcaption></figure>
+  <button class="lb-nav next" aria-label="Next">&#8250;</button>
+</div>
+<script type="application/json" id="gallery-data">{"photos": [{"src": "../../assets/gallery/predator/predator1.jpg", "cap": "Dutch’s team in the jungle", "meta": "Film still · MP5", "f": "predator"}], "videos": []}</script>
+<script src="../../assets/site.js?v=4a2689f8"></script>
 </body>
 </html>

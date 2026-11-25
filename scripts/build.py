@@ -11,7 +11,9 @@ renamed or removed) is deleted. Edit data/ and the templates here, never the out
 Images are looked up on disk, so a page never points at a missing file:
   weapon art     assets/photos/{art}.jpg, else assets/weapons/{art}.jpg  (art defaults to the slug;
                  no file: the name stands in, and the home page hero skips the weapon)
-  gallery        assets/gallery/{gallery.dir or slug}/{f}
+  gallery        assets/gallery/{photo dir, else gallery.dir, else slug}/{f}
+                 Each photo and video belongs to one film ("film", default the weapon's
+                 first film): weapon pages filter by it, film pages gather their own.
   posters        assets/posters/{poster}.jpg      (no file: the title block stands in)
   characters     assets/characters/{photo}.jpg    (no file: initials stand in)
 A bad cross-reference or a missing gallery file stops the build; images on disk
@@ -102,14 +104,27 @@ def weapon_art(w):
 
 def gallery(w):
     g = w.get('gallery') or {}
-    folder = g.get('dir', w['slug'])
+    folder, first = g.get('dir', w['slug']), w['films'][0]
     photos = []
     for p in g.get('photos', []):
-        rel = f'gallery/{folder}/{p["f"]}'
+        rel = f'gallery/{p.get("dir", folder)}/{p["f"]}'
         if not asset(rel):
             errors.append(f'weapon {w["slug"]}: missing gallery photo assets/{rel}')
-        photos.append(dict(p, rel=rel))
-    return photos, g.get('videos', [])
+        photos.append(dict(p, rel=rel, film=p.get('film', first), weapon=w['slug']))
+    videos = [dict(v, film=v.get('film', first), weapon=w['slug']) for v in g.get('videos', [])]
+    errors.extend(f'weapon {w["slug"]}: gallery item {x.get("f") or x["yt"]} is tagged {x["film"]}, not one of its films'
+                  for x in photos + videos if x['film'] not in w['films'])
+    return photos, videos
+
+
+def film_gallery(f):
+    """Every gallery photo and video tagged with film f, across its weapons (a shared clip once)."""
+    photos, videos, seen = [], [], set()
+    for w in W_BY_FILM[f]:
+        ps, vs = GALLERIES[w['slug']]
+        photos += [dict(p, meta=f'{p["meta"]} · {w["name"]}') for p in ps if p['film'] == f and p['rel'] not in seen and not seen.add(p['rel'])]
+        videos += [v for v in vs if v['film'] == f and v['yt'] not in seen and not seen.add(v['yt'])]
+    return photos, videos
 
 
 # derived lists
@@ -348,17 +363,24 @@ def related(w):
     return sorted([x for x in WEAPONS if x is not w], key=rank)[:4]
 
 
-def gallery_html(photos, videos, R):
+def gallery_html(photos, videos, R, films=()):
+    """The gallery grid; `films` (slugs, in order) adds a row of film filters when there are two or more."""
     def slot(i, label):
         return f'<span class="slot"><b>{i + 1}</b>{label}</span>'
+
+    def cls(i, n):
+        return 'gi' + (' big' if i == 0 and n >= 5 else '') + (' solo' if n == 1 else '')
     ptiles = ''.join(
-        f'<button class="gi" data-k="photos" data-i="{i}"><span class="th">{slot(i, "Photo")}<img src="{R}assets/{thumb(p["rel"], 800)}" alt="" loading="lazy"></span>'
+        f'<button class="{cls(i, len(photos))}" data-k="photos" data-i="{i}" data-f="{p["film"]}"><span class="th">{slot(i, "Photo")}<img src="{R}assets/{thumb(p["rel"], 800)}" alt="" loading="lazy"></span>'
         f'<span class="gcap">{esc(p["cap"])}<span class="mono">{esc(p["meta"])}</span></span></button>' for i, p in enumerate(photos))
     vtiles = ''.join(
-        f'<button class="gi" data-k="videos" data-i="{i}"><span class="th">{slot(i, "Video")}<img src="https://i.ytimg.com/vi/{v["yt"]}/hqdefault.jpg" alt="" loading="lazy">'
+        f'<button class="{cls(i, len(videos))}" data-k="videos" data-i="{i}" data-f="{v["film"]}"><span class="th">{slot(i, "Video")}<img src="https://i.ytimg.com/vi/{v["yt"]}/hqdefault.jpg" alt="" loading="lazy">'
         f'<span class="play"></span><span class="dur">{esc(v["dur"])}</span></span><span class="gcap">{esc(v["cap"])}<span class="mono">{esc(v["meta"])}</span></span></button>'
         for i, v in enumerate(videos))
     first = 'photos' if photos else 'videos'
+    tagged = [x for x in films if any(i['film'] == x for i in photos + videos)]
+    chips = ('<div class="gfilms" role="group" aria-label="Show one film"><button class="on" data-f="">All</button>'
+             + ''.join(f'<button data-f="{x}">{esc(FILM[x]["title"])}</button>' for x in tagged) + '</div>') if len(tagged) > 1 else ''
 
     def tab(t, label, n):
         on = t == first
@@ -368,7 +390,7 @@ def gallery_html(photos, videos, R):
     return f'''<section id="gallery">
       <div class="sec-head"><h2>Gallery</h2>
         <div class="gtabs" role="tablist">{tab("photos", "Photos", len(photos))}{tab("videos", "Videos", len(videos))}</div>
-      </div>
+      </div>{chips}
       <div class="gal{" few" if len(photos) < 5 else ""}{"" if first == "photos" else " hide"}" id="galPhotos">{ptiles}</div>
       <div class="gal vids{"" if first == "videos" else " hide"}" id="galVideos">{vtiles}</div>
     </section>'''
@@ -387,7 +409,7 @@ def build_weapon(w):
     tags = ''.join(f'<span class="tag">{esc(t)}</span>' for t in w.get('tags', []))
     specs = f'<div class="specs">{specs_html(w["specs"])}</div>' if w.get('specs') else ''
     scene = f'<p class="scene"><span class="mono">Key scene</span>{esc(w["scene"])}</p>' if w.get('scene') else ''
-    gal = gallery_html(photos, videos, R) if chip else ''
+    gal = gallery_html(photos, videos, R, w['films']) if chip else ''
 
     appears = ''.join(
         f'<div class="film">{poster(FILM[x], R, "a", f"{R}films/{x}/")}<div class="cap"><h3><a href="{R}films/{x}/">{esc(FILM[x]["title"])}</a></h3>'
@@ -436,12 +458,15 @@ def build_weapon(w):
     </section>
   </div>
 </main>'''
-    tail = ''
-    if gal:
-        data = {'photos': [{'src': f'{R}assets/{p["rel"]}', 'cap': p['cap'], 'meta': p['meta']} for p in photos],
-                'videos': [{k: v[k] for k in ('yt', 'cap', 'meta', 'dur')} for v in videos]}
-        blob = json.dumps(data, ensure_ascii=False).replace('</', '<\\/')
-        tail = f'''
+    page(f'weapons/{s}/index.html', f'{w["name"]} in {f["title"]} ({f["year"]}){SUFFIX}', w['lede'], main, 'weapons', gallery_tail(photos, videos, R) if gal else '')
+
+
+def gallery_tail(photos, videos, R):
+    """The lightbox and the #gallery-data list site.js reads."""
+    data = {'photos': [{'src': f'{R}assets/{p["rel"]}', 'cap': p['cap'], 'meta': p['meta'], 'f': p['film']} for p in photos],
+            'videos': [dict({k: v[k] for k in ('yt', 'cap', 'meta', 'dur')}, f=v['film']) for v in videos]}
+    blob = json.dumps(data, ensure_ascii=False).replace('</', '<\\/')
+    return f'''
 <div class="lb hide" id="lb" role="dialog" aria-modal="true" aria-label="Gallery viewer">
   <button class="lb-x" aria-label="Close">&times;</button>
   <button class="lb-nav prev" aria-label="Previous">&#8249;</button>
@@ -450,7 +475,6 @@ def build_weapon(w):
 </div>
 <script type="application/json" id="gallery-data">{blob}</script>
 '''
-    page(f'weapons/{s}/index.html', f'{w["name"]} in {f["title"]} ({f["year"]}){SUFFIX}', w['lede'], main, 'weapons', tail)
 
 
 # ---------- film pages ----------
@@ -467,6 +491,8 @@ def build_film(f):
                   key=lambda x: (0 if W_BY_FILM[x['slug']] else 1, FILMS.index(x)))
     weapons = f'<div class="cards3">{"".join(wcard(w, R) for w in ws)}</div>' if ws else empty('No weapons on file yet.')
     chars = sec('Characters', f'<div class="chars">{"".join(char_card(c, R) for c in cs)}</div>') if cs else ''
+    photos, videos = film_gallery(f['slug'])
+    gal = f'<div class="wrap">{gallery_html(photos, videos, R)}</div>' if photos or videos else ''
     more_html = sec(f'More {esc(g["name"])}', f'<div class="films">{"".join(film_card(x, R) for x in more[:6])}</div>',
                     f'<a class="more" href="{R}films/#{g["slug"]}">See all</a>') if more else ''
     main = f'''<main>
@@ -487,12 +513,14 @@ def build_film(f):
     <div class="sec-head"><h2>Weapons</h2></div>
     {weapons}
   </div></section>
+  {gal}
   {chars}
   {more_html}
 </main>'''
     desc = (f'The weapons of {f["title"]} ({f["year"]}): ' + ', '.join(w['name'] for w in ws) + ', and who carries them.' if ws
             else f'{f["title"]} ({f["year"]}) on Armory.Reel, the movie weapons database.')
-    page(f'films/{f["slug"]}/index.html', f'{f["title"]} ({f["year"]}) weapons{SUFFIX}', desc, main, 'films')
+    page(f'films/{f["slug"]}/index.html', f'{f["title"]} ({f["year"]}) weapons{SUFFIX}', desc, main, 'films',
+         gallery_tail(photos, videos, R) if gal else '')
 
 
 # ---------- character pages ----------

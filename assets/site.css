@@ -178,17 +178,22 @@ footer .fine{text-align:right;color:var(--faint);font-size:12px;max-width:420px}
 .gtabs button span{font:500 11px var(--mono);color:var(--faint);margin-left:4px}
 .gtabs button.on{background:var(--panel2);color:var(--text);box-shadow:inset 0 -2px 0 var(--rust)}
 .gtabs button.on span{color:var(--rust)}
+.gfilms{display:flex;flex-wrap:wrap;gap:8px;margin:-8px 0 18px}
+.gfilms button{font:600 12px var(--body);background:none;color:var(--muted);border:1px solid var(--line);padding:6px 12px;cursor:pointer}
+.gfilms button:hover{color:var(--text)}
+.gfilms button.on{color:var(--text);background:var(--panel2);border-color:var(--rust)}
 .gal{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
 .gal.vids{grid-template-columns:repeat(3,minmax(0,1fr))}
 .gal.hide{display:none}
-.vids .gi:only-child{grid-column:span 2}
+.vids .gi.solo{grid-column:span 2}
+.gi[hidden]{display:none}
 .gi{background:var(--panel);border:1px solid var(--line);cursor:pointer;text-align:left;color:inherit;font:inherit;padding:0;transition:border-color .15s;display:flex;flex-direction:column;justify-content:flex-start}   /* photo at the top, even when a caption is shorter than its row-mate's */
 .gi:hover,.gi:focus-visible{border-color:var(--rust);outline:none}
 .gi .th{aspect-ratio:16/9;position:relative;overflow:hidden;background:radial-gradient(120% 90% at 50% 40%,#1E2A36,#0D131A);display:grid;place-items:center}
-.gal:not(.vids):not(.few) .gi:first-child{grid-column:span 2;grid-row:span 2}
-.gal:not(.vids):not(.few) .gi:first-child .th{aspect-ratio:auto}
-.gal:not(.vids):not(.few) .gi:first-child{display:flex;flex-direction:column}
-.gal:not(.vids):not(.few) .gi:first-child .th{flex:1;min-height:0}
+.gal:not(.vids):not(.few) .gi.big{grid-column:span 2;grid-row:span 2}
+.gal:not(.vids):not(.few) .gi.big .th{aspect-ratio:auto}
+.gal:not(.vids):not(.few) .gi.big{display:flex;flex-direction:column}
+.gal:not(.vids):not(.few) .gi.big .th{flex:1;min-height:0}
 .gi .th img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .gi .th .slot{font:500 10.5px var(--mono);text-transform:uppercase;letter-spacing:1px;color:#5F6E7C;text-align:center;padding:0 12px}
 .gi .th .slot b{display:block;font:700 30px var(--display);color:#3B4958;margin-bottom:6px}
@@ -268,10 +273,10 @@ footer .fine{text-align:right;color:var(--faint);font-size:12px;max-width:420px}
   .rel .wcard .cap{padding:12px}
   #gallery .sec-head{flex-direction:column;align-items:flex-start;gap:12px}
   .gal{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-  .gal:not(.vids):not(.few) .gi:first-child{grid-row:auto}
-  .gal:not(.vids):not(.few) .gi:first-child .th{aspect-ratio:16/9;flex:none}
+  .gal:not(.vids):not(.few) .gi.big{grid-row:auto}
+  .gal:not(.vids):not(.few) .gi.big .th{aspect-ratio:16/9;flex:none}
   .gal.vids{grid-template-columns:minmax(0,1fr)}
-  .vids .gi:only-child{grid-column:auto}
+  .vids .gi.solo{grid-column:auto}
   .gi .gcap{padding:8px 10px 10px;font-size:12px}
   .lb{grid-template-columns:minmax(0,1fr);padding:56px 12px 24px;align-content:center}
   .lb-nav{position:absolute;bottom:22px;width:44px;height:44px}

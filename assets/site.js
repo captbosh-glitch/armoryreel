@@ -1,6 +1,7 @@
-// Armory.Reel: the phone menu, search, and on weapon pages the gallery tabs and lightbox.
-// The gallery grid is written by scripts/build.py; the lightbox reads the same list
-// from the #gallery-data JSON (photos: src, cap, meta; videos: yt, cap, meta, dur).
+// Armory.Reel: the phone menu, search, and on weapon and film pages the gallery tabs,
+// film filters and lightbox. The gallery grid is written by scripts/build.py; the lightbox
+// reads the same list from the #gallery-data JSON (photos: src, cap, meta, f; videos: yt,
+// cap, meta, dur, f; f is the film's slug).
 (function(){
   var menu = document.querySelector('.menu');
   if (menu) menu.onclick = function(e){ e.preventDefault(); document.querySelector('header').classList.toggle('open'); };
@@ -63,35 +64,67 @@
   if (!data) return;
   var GALLERY = JSON.parse(data.textContent);
 
-  document.querySelectorAll('.gtabs button').forEach(function(b){ b.onclick = function(){
-    document.querySelectorAll('.gtabs button').forEach(function(x){ x.classList.toggle('on', x === b); x.setAttribute('aria-selected', x === b); });
-    document.getElementById('galPhotos').classList.toggle('hide', b.dataset.t !== 'photos');
-    document.getElementById('galVideos').classList.toggle('hide', b.dataset.t !== 'videos');
+  var tabs = document.querySelectorAll('.gtabs button'), film = '';
+  function show(t){
+    tabs.forEach(function(x){ x.classList.toggle('on', x.dataset.t === t); x.setAttribute('aria-selected', x.dataset.t === t); });
+    document.getElementById('galPhotos').classList.toggle('hide', t !== 'photos');
+    document.getElementById('galVideos').classList.toggle('hide', t !== 'videos');
+  }
+  tabs.forEach(function(b){ b.onclick = function(){ show(b.dataset.t); }; });
+  // indexes into GALLERY[k] that the film filter lets through
+  function vis(k){ return GALLERY[k].map(function(_, i){ return i; }).filter(function(i){ return !film || GALLERY[k][i].f === film; }); }
+  // Film filter: hide the other films' tiles, renumber, recount the tabs, and keep the
+  // big first photo and the lone-video width on whatever is now first or alone.
+  function filter(f){
+    film = f;
+    var counts = {};
+    ['photos', 'videos'].forEach(function(k){
+      var box = document.getElementById(k === 'photos' ? 'galPhotos' : 'galVideos'), tiles = box.querySelectorAll('.gi'), n = vis(k).length, j = 0;
+      tiles.forEach(function(t){
+        var on = !film || t.dataset.f === film;
+        t.hidden = !on; t.classList.remove('big', 'solo');
+        if (!on) return;
+        t.querySelector('.slot b').textContent = ++j;
+        if (j === 1 && n >= 5) t.classList.add('big');
+        if (n === 1) t.classList.add('solo');
+      });
+      if (k === 'photos') box.classList.toggle('few', n < 5);
+      counts[k] = n;
+    });
+    tabs.forEach(function(b){ b.hidden = !counts[b.dataset.t]; b.querySelector('span').textContent = counts[b.dataset.t]; });
+    var on = document.querySelector('.gtabs button.on');
+    if (!on || !counts[on.dataset.t]) show(counts.photos ? 'photos' : 'videos');
+  }
+  document.querySelectorAll('.gfilms button').forEach(function(b){ b.onclick = function(){
+    document.querySelectorAll('.gfilms button').forEach(function(x){ x.classList.toggle('on', x === b); });
+    filter(b.dataset.f);
   }; });
   var chip = document.querySelector('.galchip');
   if (chip) chip.onclick = function(e){ e.preventDefault(); document.getElementById('gallery').scrollIntoView({behavior: 'smooth'}); };
 
   function slot(i, label){ return '<span class="slot"><b>' + (i + 1) + '</b>' + label + '</span>'; }
   var lb = document.getElementById('lb'), cur = null;
+  // i indexes GALLERY[k]; the arrows and the count only cover what the film filter shows
   function open(k, i){
-    var list = GALLERY[k]; i = (i + list.length) % list.length; cur = {k: k, i: i};
-    var it = list[i], m = document.getElementById('lbMedia');
+    var v = vis(k), pos = v.indexOf(i); cur = {k: k, i: i};
+    var it = GALLERY[k][i], m = document.getElementById('lbMedia');
     if (k === 'videos') m.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + it.yt + '?autoplay=1" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
-    else m.innerHTML = slot(i, 'Photo') + '<img src="' + it.src + '" alt="">';
+    else m.innerHTML = slot(pos, 'Photo') + '<img src="' + it.src + '" alt="">';
     document.getElementById('lbCap').textContent = it.cap;
-    document.getElementById('lbMeta').textContent = it.meta + (it.dur ? ' · ' + it.dur : '') + ' · ' + (i + 1) + ' of ' + list.length;
+    document.getElementById('lbMeta').textContent = it.meta + (it.dur ? ' · ' + it.dur : '') + ' · ' + (pos + 1) + ' of ' + v.length;
     lb.classList.remove('hide'); document.body.style.overflow = 'hidden';
   }
   function close(){ lb.classList.add('hide'); document.getElementById('lbMedia').innerHTML = ''; document.body.style.overflow = ''; cur = null; }
   document.querySelectorAll('.gi').forEach(function(b){ b.onclick = function(){ open(b.dataset.k, +b.dataset.i); }; });
   lb.querySelector('.lb-x').onclick = close;
-  lb.querySelector('.prev').onclick = function(){ open(cur.k, cur.i - 1); };
-  lb.querySelector('.next').onclick = function(){ open(cur.k, cur.i + 1); };
+  function step(d){ var v = vis(cur.k), p = v.indexOf(cur.i); open(cur.k, v[(p + d + v.length) % v.length]); }
+  lb.querySelector('.prev').onclick = function(){ step(-1); };
+  lb.querySelector('.next').onclick = function(){ step(1); };
   lb.onclick = function(e){ if (e.target === lb) close(); };
   document.addEventListener('keydown', function(e){
     if (!cur) return;
     if (e.key === 'Escape') close();
-    if (e.key === 'ArrowLeft') open(cur.k, cur.i - 1);
-    if (e.key === 'ArrowRight') open(cur.k, cur.i + 1);
+    if (e.key === 'ArrowLeft') step(-1);
+    if (e.key === 'ArrowRight') step(1);
   });
 })();

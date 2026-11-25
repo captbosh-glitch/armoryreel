@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../../assets/site.css?v=eb0d0b24">
+<link rel="stylesheet" href="../../assets/site.css?v=8070d9f5">
 </head>
 <body data-root="../../">
 
@@ -44,6 +44,13 @@
     <div class="sec-head"><h2>Weapons</h2></div>
     <div class="cards3"><a class="wcard" href="../../weapons/m41a/"><div class="art"><img src="../../assets/thumbs/800/photos/m41a.jpg" alt="" loading="lazy"></div><div class="cap"><h3>M41A Pulse Rifle</h3><div class="media mono">5 photos · 1 video</div><div class="sub">Aliens · 1986 · <b>Hicks, Hudson &amp; Ripley</b></div></div></a></div>
   </div></section>
+  <div class="wrap"><section id="gallery">
+      <div class="sec-head"><h2>Gallery</h2>
+        <div class="gtabs" role="tablist"><button class="on" data-t="photos" role="tab" aria-selected="true">Photos <span>5</span></button><button data-t="videos" role="tab" aria-selected="false">Videos <span>1</span></button></div>
+      </div>
+      <div class="gal" id="galPhotos"><button class="gi big" data-k="photos" data-i="0" data-f="aliens"><span class="th"><span class="slot"><b>1</b>Photo</span><img src="../../assets/thumbs/800/gallery/m41a/m141a5.jpg" alt="" loading="lazy"></span><span class="gcap">The squad moves in, pulse rifles and smartgun up<span class="mono">Film still · M41A Pulse Rifle</span></span></button><button class="gi" data-k="photos" data-i="1" data-f="aliens"><span class="th"><span class="slot"><b>2</b>Photo</span><img src="../../assets/thumbs/800/gallery/m41a/m141a3.jpg" alt="" loading="lazy"></span><span class="gcap">Hicks shows Ripley the rifle (note the ammo counter)<span class="mono">Film still · M41A Pulse Rifle</span></span></button><button class="gi" data-k="photos" data-i="2" data-f="aliens"><span class="th"><span class="slot"><b>3</b>Photo</span><img src="../../assets/thumbs/800/gallery/m41a/m141a4.jpg" alt="" loading="lazy"></span><span class="gcap">A Marine aboard the Sulaco<span class="mono">Film still · M41A Pulse Rifle</span></span></button><button class="gi" data-k="photos" data-i="3" data-f="aliens"><span class="th"><span class="slot"><b>4</b>Photo</span><img src="../../assets/thumbs/800/gallery/m41a/m141a1.jpg" alt="" loading="lazy"></span><span class="gcap">The hero prop, side view<span class="mono">Studio photo · M41A Pulse Rifle</span></span></button><button class="gi" data-k="photos" data-i="4" data-f="aliens"><span class="th"><span class="slot"><b>5</b>Photo</span><img src="../../assets/thumbs/800/gallery/m41a/m141a2.jpg" alt="" loading="lazy"></span><span class="gcap">The hero prop, three-quarter view<span class="mono">Studio photo · M41A Pulse Rifle</span></span></button></div>
+      <div class="gal vids hide" id="galVideos"><button class="gi solo" data-k="videos" data-i="0" data-f="aliens"><span class="th"><span class="slot"><b>1</b>Video</span><img src="https://i.ytimg.com/vi/-An42CImewk/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span><span class="dur">2:30</span></span><span class="gcap">Every pulse rifle moment, from a 35mm scan<span class="mono">Supercut · Basinova</span></span></button></div>
+    </section></div>
   <section style="padding-top:0"><div class="wrap">
     <div class="sec-head"><h2>Characters</h2></div>
     <div class="chars"><a class="char" href="../../characters/hicks/"><div class="photo"><img src="../../assets/thumbs/480/characters/hicks.jpg" alt="" loading="lazy"></div><div class="cap"><h3>Hicks</h3><div class="sub">Michael Biehn</div></div></a><a class="char" href="../../characters/hudson/"><div class="photo"><img src="../../assets/thumbs/480/characters/hudson.jpg" alt="" loading="lazy"></div><div class="cap"><h3>Hudson</h3><div class="sub">Bill Paxton</div></div></a><a class="char" href="../../characters/ripley/"><div class="photo"><img src="../../assets/thumbs/480/characters/ripley.jpg" alt="" loading="lazy"></div><div class="cap"><h3>Ripley</h3><div class="sub">Sigourney Weaver</div></div></a><a class="char" href="../../characters/colonial-marines/"><div class="photo"><img src="../../assets/thumbs/480/characters/colonial_marines.jpg" alt="" loading="lazy"></div><div class="cap"><h3>Colonial Marines</h3><div class="sub">The whole squad</div></div></a></div>
@@ -58,6 +65,14 @@
   <div><div class="logo">Armory<span>.Reel</span></div>An independent guide to the weapons of cinema.</div>
   <div class="fine">A fan project. Posters, stills, photos and clips belong to their owners.</div>
 </div></footer>
-<script src="../../assets/site.js?v=ff6add47"></script>
+
+<div class="lb hide" id="lb" role="dialog" aria-modal="true" aria-label="Gallery viewer">
+  <button class="lb-x" aria-label="Close">&times;</button>
+  <button class="lb-nav prev" aria-label="Previous">&#8249;</button>
+  <figure><div class="lb-media" id="lbMedia"></div><figcaption><b id="lbCap"></b><span class="mono" id="lbMeta"></span></figcaption></figure>
+  <button class="lb-nav next" aria-label="Next">&#8250;</button>
+</div>
+<script type="application/json" id="gallery-data">{"photos": [{"src": "../../assets/gallery/m41a/m141a5.jpg", "cap": "The squad moves in, pulse rifles and smartgun up", "meta": "Film still · M41A Pulse Rifle", "f": "aliens"}, {"src": "../../assets/gallery/m41a/m141a3.jpg", "cap": "Hicks shows Ripley the rifle (note the ammo counter)", "meta": "Film still · M41A Pulse Rifle", "f": "aliens"}, {"src": "../../assets/gallery/m41a/m141a4.jpg", "cap": "A Marine aboard the Sulaco", "meta": "Film still · M41A Pulse Rifle", "f": "aliens"}, {"src": "../../assets/gallery/m41a/m141a1.jpg", "cap": "The hero prop, side view", "meta": "Studio photo · M41A Pulse Rifle", "f": "aliens"}, {"src": "../../assets/gallery/m41a/m141a2.jpg", "cap": "The hero prop, three-quarter view", "meta": "Studio photo · M41A Pulse Rifle", "f": "aliens"}], "videos": [{"yt": "-An42CImewk", "cap": "Every pulse rifle moment, from a 35mm scan", "meta": "Supercut · Basinova", "dur": "2:30", "f": "aliens"}]}</script>
+<script src="../../assets/site.js?v=4a2689f8"></script>
 </body>
 </html>

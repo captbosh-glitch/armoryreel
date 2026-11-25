@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../../assets/site.css?v=eb0d0b24">
+<link rel="stylesheet" href="../../assets/site.css?v=8070d9f5">
 </head>
 <body data-root="../../">
 
@@ -44,6 +44,13 @@
     <div class="sec-head"><h2>Weapons</h2></div>
     <div class="cards3"><a class="wcard" href="../../weapons/glaive/"><div class="art"><img src="../../assets/thumbs/800/weapons/glaive.jpg" alt="" loading="lazy"></div><div class="cap"><h3>The Glaive</h3><div class="media mono">4 photos · 2 videos</div><div class="sub">Krull · 1983 · <b>Colwyn</b></div></div></a></div>
   </div></section>
+  <div class="wrap"><section id="gallery">
+      <div class="sec-head"><h2>Gallery</h2>
+        <div class="gtabs" role="tablist"><button class="on" data-t="photos" role="tab" aria-selected="true">Photos <span>4</span></button><button data-t="videos" role="tab" aria-selected="false">Videos <span>2</span></button></div>
+      </div>
+      <div class="gal few" id="galPhotos"><button class="gi" data-k="photos" data-i="0" data-f="krull"><span class="th"><span class="slot"><b>1</b>Photo</span><img src="../../assets/thumbs/800/gallery/glaive/glaive1.jpg" alt="" loading="lazy"></span><span class="gcap">Colwyn raises the Glaive, Lyssa behind him<span class="mono">Film still · The Glaive</span></span></button><button class="gi" data-k="photos" data-i="1" data-f="krull"><span class="th"><span class="slot"><b>2</b>Photo</span><img src="../../assets/thumbs/800/gallery/glaive/glaive2.jpg" alt="" loading="lazy"></span><span class="gcap">Colwyn with the Glaive inside the Black Fortress<span class="mono">Film still · The Glaive</span></span></button><button class="gi" data-k="photos" data-i="2" data-f="krull"><span class="th"><span class="slot"><b>3</b>Photo</span><img src="../../assets/thumbs/800/gallery/glaive/glaive4.jpg" alt="" loading="lazy"></span><span class="gcap">The prop, blades out<span class="mono">Studio photo · The Glaive</span></span></button><button class="gi" data-k="photos" data-i="3" data-f="krull"><span class="th"><span class="slot"><b>4</b>Photo</span><img src="../../assets/thumbs/800/gallery/glaive/glaive3.jpg" alt="" loading="lazy"></span><span class="gcap">The prop, close on one blade and its jewel<span class="mono">Studio photo · The Glaive</span></span></button></div>
+      <div class="gal vids hide" id="galVideos"><button class="gi" data-k="videos" data-i="0" data-f="krull"><span class="th"><span class="slot"><b>1</b>Video</span><img src="https://i.ytimg.com/vi/haAEWCmdfis/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span><span class="dur">9:04</span></span><span class="gcap">Colwyn retrieves the Glaive from the mountain<span class="mono">Film clip · Now Scaring</span></span></button><button class="gi" data-k="videos" data-i="1" data-f="krull"><span class="th"><span class="slot"><b>2</b>Video</span><img src="https://i.ytimg.com/vi/Jp6zmsmkqSk/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span><span class="dur">1:20</span></span><span class="gcap">The Glaive in action<span class="mono">Film clip · 80s D&amp;D Fan</span></span></button></div>
+    </section></div>
   <section style="padding-top:0"><div class="wrap">
     <div class="sec-head"><h2>Characters</h2></div>
     <div class="chars"><a class="char" href="../../characters/colwyn/"><div class="photo"><img src="../../assets/thumbs/480/characters/colwyn.jpg" alt="" loading="lazy"></div><div class="cap"><h3>Colwyn</h3><div class="sub">Ken Marshall</div></div></a></div>
@@ -58,6 +65,14 @@
   <div><div class="logo">Armory<span>.Reel</span></div>An independent guide to the weapons of cinema.</div>
   <div class="fine">A fan project. Posters, stills, photos and clips belong to their owners.</div>
 </div></footer>
-<script src="../../assets/site.js?v=ff6add47"></script>
+
+<div class="lb hide" id="lb" role="dialog" aria-modal="true" aria-label="Gallery viewer">
+  <button class="lb-x" aria-label="Close">&times;</button>
+  <button class="lb-nav prev" aria-label="Previous">&#8249;</button>
+  <figure><div class="lb-media" id="lbMedia"></div><figcaption><b id="lbCap"></b><span class="mono" id="lbMeta"></span></figcaption></figure>
+  <button class="lb-nav next" aria-label="Next">&#8250;</button>
+</div>
+<script type="application/json" id="gallery-data">{"photos": [{"src": "../../assets/gallery/glaive/glaive1.jpg", "cap": "Colwyn raises the Glaive, Lyssa behind him", "meta": "Film still · The Glaive", "f": "krull"}, {"src": "../../assets/gallery/glaive/glaive2.jpg", "cap": "Colwyn with the Glaive inside the Black Fortress", "meta": "Film still · The Glaive", "f": "krull"}, {"src": "../../assets/gallery/glaive/glaive4.jpg", "cap": "The prop, blades out", "meta": "Studio photo · The Glaive", "f": "krull"}, {"src": "../../assets/gallery/glaive/glaive3.jpg", "cap": "The prop, close on one blade and its jewel", "meta": "Studio photo · The Glaive", "f": "krull"}], "videos": [{"yt": "haAEWCmdfis", "cap": "Colwyn retrieves the Glaive from the mountain", "meta": "Film clip · Now Scaring", "dur": "9:04", "f": "krull"}, {"yt": "Jp6zmsmkqSk", "cap": "The Glaive in action", "meta": "Film clip · 80s D&D Fan", "dur": "1:20", "f": "krull"}]}</script>
+<script src="../../assets/site.js?v=4a2689f8"></script>
 </body>
 </html>
