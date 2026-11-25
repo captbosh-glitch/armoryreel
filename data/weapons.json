@@ -113,7 +113,9 @@
         {"f": "kapa1.jpg", "cap": "The prop, blades out", "meta": "Studio photo"}
       ],
       "videos": [
-        {"cap": "The best of The Beastmaster, Kapa included", "meta": "Film clips · JoBlo Movie Clips", "dur": "8:10", "yt": "NsjNtIT4zT4"}
+        {"cap": "The best of The Beastmaster, Kapa included", "meta": "Film clips · JoBlo Movie Clips", "dur": "8:10", "yt": "NsjNtIT4zT4"},
+        {"cap": "The Beastmaster trailer", "meta": "Trailer · TrailerHome", "dur": "2:10", "yt": "XYvILyXjSaY"},
+        {"cap": "The Beastmaster, the full movie (free with ads)", "meta": "Full movie · YouTube Movies", "dur": "1:58:37", "yt": "Fg6JGN6R8a8"}
       ]
     }
   },
@@ -134,7 +136,9 @@
         {"f": "beastmaster5.jpg", "cap": "The sword, side view", "meta": "Studio photo"}
       ],
       "videos": [
-        {"cap": "Dar fights the Jun leader", "meta": "Fight scene · DarkEqualizer", "dur": "2:28", "yt": "ga0qYiSASZM"}
+        {"cap": "Dar fights the Jun leader", "meta": "Fight scene · DarkEqualizer", "dur": "2:28", "yt": "ga0qYiSASZM"},
+        {"cap": "The Beastmaster trailer", "meta": "Trailer · TrailerHome", "dur": "2:10", "yt": "XYvILyXjSaY"},
+        {"cap": "The Beastmaster, the full movie (free with ads)", "meta": "Full movie · YouTube Movies", "dur": "1:58:37", "yt": "Fg6JGN6R8a8"}
       ]
     }
   },
