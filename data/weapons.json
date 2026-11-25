@@ -165,8 +165,13 @@
     "specs": [["First seen", "The Fifth Element, 1997"], ["Maker", "Zorg Industries"], ["Built in", "Rockets, nets, poison arrows, flamethrower"], ["Also", "A little red button"]],
     "scene": "Zorg shows off every trick the ZF-1 has, and leaves out what the little red button does.",
     "gallery": {
-      "dir": "zf1",
-      "photos": [],
+      "dir": "fifthelement",
+      "photos": [
+        {"f": "zf11.jpg", "cap": "Zorg shows off the ZF-1", "meta": "Film still"},
+        {"f": "zf14.jpg", "cap": "Zorg demonstrates the ZF-1 for the Mangalores", "meta": "Film still"},
+        {"f": "zf13.jpg", "cap": "Close on the little red button", "meta": "Film still"},
+        {"f": "zf12.jpg", "cap": "The ZF-1, side view", "meta": "Studio photo"}
+      ],
       "videos": [
         {"cap": "Zorg presents the ZF-1", "meta": "Film clip · Movieclips", "dur": "2:39", "yt": "7jVsQToSfag"}
       ]
