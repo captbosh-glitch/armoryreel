@@ -94,7 +94,19 @@
     "lede": "The Bride’s sword in Kill Bill Vol. 1 (2003).",
     "tags": ["Blades", "Sword", "The Bride"],
     "specs": [["First seen", "Kill Bill Vol. 1, 2003"], ["Maker", "Hattori Hanzo"], ["The smith", "Fictional"], ["Named after", "A 16th-century samurai"]],
-    "scene": "The Bride takes on the Crazy 88 at the House of Blue Leaves."
+    "scene": "The Bride takes on the Crazy 88 at the House of Blue Leaves.",
+    "gallery": {
+      "dir": "killbill",
+      "photos": [
+        {"f": "killbill4.jpg", "cap": "The Bride, surrounded by the Crazy 88", "meta": "Film still"},
+        {"f": "killbill1.jpg", "cap": "The Bride squares up at the House of Blue Leaves", "meta": "Film still"},
+        {"f": "killbill2.jpg", "cap": "Close on the Hattori Hanzo blade", "meta": "Film still"},
+        {"f": "killbill3.jpg", "cap": "The Bride faces O-Ren Ishii in the snow garden", "meta": "Film still"}
+      ],
+      "videos": [
+        {"cap": "The Bride vs the Crazy 88", "meta": "Film clip · JoBlo Action 4K", "dur": "7:26", "yt": "jTZHmk2Q8HA"}
+      ]
+    }
   },
   {
     "slug": "beretta-92f", "art": "beretta", "name": "Beretta 92F", "title_lines": ["Beretta", "92F"],
